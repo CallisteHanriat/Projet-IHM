@@ -4,10 +4,14 @@
 package m2105_ihm.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import javax.swing.JButton;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -31,7 +35,7 @@ public class PlanningUI extends JPanel {
     private JPanel centre;
     private JComboBox mois;
     private JComboBox annee;
-    private ArrayList<JLabel> jours;
+    private ArrayList<JButton> jours;
 
     /** 
      * Constructeur : initialise les composants de l'IHM pour les événements
@@ -60,7 +64,19 @@ public class PlanningUI extends JPanel {
         
         mois = new JComboBox(Mois.values());
         
-        mois.setSelectedItem(Mois.JUIN);
+        Mois currentMonth = null;
+        
+        int nb = 0;
+        
+        for (Mois m : Mois.values()){
+            if (nb == Calendar.getInstance().get(Calendar.MONTH)){
+                currentMonth = m;
+                break;
+            }
+            nb++;
+        }
+        
+        mois.setSelectedItem(currentMonth);
         
         mois.addActionListener(new ActionListener() {
 
@@ -72,12 +88,13 @@ public class PlanningUI extends JPanel {
         });
         
         annee = new JComboBox();
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         
-        for (int i = 1900; i <= 2015; i++){
+        for (int i = 1900; i <= currentYear; i++){
             annee.addItem(i);
         }
         
-        annee.setSelectedIndex(2015 - 1900);
+        annee.setSelectedIndex(currentYear - 1900);
         
         annee.addActionListener(new ActionListener() {
 
@@ -144,6 +161,21 @@ public class PlanningUI extends JPanel {
         return D;
     }
     
+    public static int getNumberOfDayInMonth(int month, int year){
+        Boolean leapYear = (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
+        int daysInMonth;
+        if (month == 4 || month == 6 || month == 9 || month == 11){
+            daysInMonth = 30;
+        }else {
+            if (month == 2){
+                daysInMonth = (leapYear) ? 29 : 28;
+            } else {
+                daysInMonth = 31;
+            }
+        }
+        return daysInMonth;
+    }
+    
     public void setCalendar(){
         centre.removeAll();
         
@@ -166,14 +198,33 @@ public class PlanningUI extends JPanel {
         int nb = 0;
         jours = new ArrayList<>();
         
+        int nombreJours = getNumberOfDayInMonth(m-1, y);
+        
         for (int i = 1; i < D; i++){
-            jours.add(new JLabel(Integer.toString(i+32-D)));
+            jours.add(new JButton(Integer.toString(i+1+nombreJours-D)));
+            jours.get(nb).setEnabled(false);
             centre.add(jours.get(nb));
             nb++;
         }
         
-        for (int i = 1; i <= 31; i++){
-            jours.add(new JLabel(Integer.toString(i)));
+        nombreJours = getNumberOfDayInMonth(m, y);
+        
+        int currentDay = Calendar.getInstance().getTime().getDay();
+        int currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        
+        for (int i = 1; i <= nombreJours; i++){
+            jours.add(new JButton(Integer.toString(i)));
+            jours.get(nb).addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Test");
+                }
+            });
+            if (i==currentDay && m==currentMonth && y==currentYear){
+                jours.get(nb).setBackground(Color.ORANGE);
+            }
             centre.add(jours.get(nb));
             nb++;
         }
@@ -181,21 +232,27 @@ public class PlanningUI extends JPanel {
         if (nb > 35){
             int i = 1;
             while(nb < 42){
-                jours.add(new JLabel(Integer.toString(i)));
+                jours.add(new JButton(Integer.toString(i)));
+                jours.get(nb).setEnabled(false);
                 centre.add(jours.get(nb));
                 i++;
                 nb++;
             }
             centre.setLayout(new GridLayout(7, 7));
         } else {
-            int i = 1;
-            while(nb < 35){
-                jours.add(new JLabel(Integer.toString(i)));
-                centre.add(jours.get(nb));
-                i++;
-                nb++;
-            }
-            centre.setLayout(new GridLayout(6, 7));   
+            if (nb > 28){
+                int i = 1;
+                while(nb < 35){
+                    jours.add(new JButton(Integer.toString(i)));
+                    jours.get(nb).setEnabled(false);
+                    centre.add(jours.get(nb));
+                    i++;
+                    nb++;
+                }
+                centre.setLayout(new GridLayout(6, 7));   
+            } else{
+                centre.setLayout(new GridLayout(5, 7));   
+            }            
         }
     }
 }
