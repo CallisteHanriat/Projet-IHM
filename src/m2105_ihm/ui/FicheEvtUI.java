@@ -21,7 +21,6 @@ public class FicheEvtUI extends javax.swing.JPanel {
      */
     private PlanningUI planning;
     private JTextField intitule;
-    private JLabel selectedDate;
     
     /**
      * Creates new form CarnetUI
@@ -55,6 +54,8 @@ public class FicheEvtUI extends javax.swing.JPanel {
         
         intitule = new JTextField(15);
         this.add(intitule);
+        
+        this.add(new JLabel(planning.getSelectedDate()));
         
     }
 
