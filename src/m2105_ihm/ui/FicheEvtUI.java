@@ -68,6 +68,8 @@ public class FicheEvtUI extends javax.swing.JPanel {
         if (event == null) { return false; }            
                   
         /** Projet : à compléter **/
+        
+        intitule.setText(event.getIntitule());
             
         return false;
     }
@@ -82,6 +84,8 @@ public class FicheEvtUI extends javax.swing.JPanel {
         if (event == null) { return false; }
         
         /** Projet : à compléter **/
+       
+        event.setIntitule(intitule.getText());
         
         return true;
     }
