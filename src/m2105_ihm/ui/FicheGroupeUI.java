@@ -28,7 +28,7 @@ public class FicheGroupeUI extends javax.swing.JPanel {
     /*
      * Composants graphiques constituants l'interface
      */
-    private CarnetUI     carnet;
+    private CarnetUI carnet;
     private JTextField champNom;
     private JTable tableMembres;
     private ZoneDessinUI zoneDessin;
@@ -154,12 +154,7 @@ public class FicheGroupeUI extends javax.swing.JPanel {
         
         infosGroupeListePanel.setSize(300, 150);
         this.infosGroupeBoutonsPanel.add(boutonAccepter);
-        this.infosGroupeBoutonsPanel.add(boutonAnnuler);
-        
-
-        System.out.println("width : " + this.getWidth());
-        System.out.println("height : " + this.getHeight());
-        
+        this.infosGroupeBoutonsPanel.add(boutonAnnuler);        
     }
 
     /**
@@ -170,7 +165,7 @@ public class FicheGroupeUI extends javax.swing.JPanel {
     public boolean setValues(GroupeContacts groupe) {
         if (groupe == null) { return false; }
         int i =  0;
-        /** TP 2 : à compléter **/
+        
         champNom.setText(groupe.toString());
         
         int tab[] = new int[groupe.getSymboles().length];

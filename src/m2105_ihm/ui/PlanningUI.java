@@ -15,6 +15,7 @@ import javax.swing.JButton;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import m2105_ihm.Controleur;
@@ -36,6 +37,7 @@ public class PlanningUI extends JPanel {
     private JComboBox mois;
     private JComboBox annee;
     private ArrayList<JButton> jours;
+    private int selectedDay = 1;
 
     /** 
      * Constructeur : initialise les composants de l'IHM pour les événements
@@ -59,15 +61,11 @@ public class PlanningUI extends JPanel {
         ficheEvt = new FicheEvtUI(this); 
         nord = new JPanel();
         centre = new JPanel();
-        
         nord.setLayout(new GridLayout(1, 2));
         
         mois = new JComboBox(Mois.values());
-        
         Mois currentMonth = null;
-        
         int nb = 0;
-        
         for (Mois m : Mois.values()){
             if (nb == Calendar.getInstance().get(Calendar.MONTH)){
                 currentMonth = m;
@@ -77,7 +75,6 @@ public class PlanningUI extends JPanel {
         }
         
         mois.setSelectedItem(currentMonth);
-        
         mois.addActionListener(new ActionListener() {
 
             @Override
@@ -89,13 +86,11 @@ public class PlanningUI extends JPanel {
         
         annee = new JComboBox();
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-        
         for (int i = 1900; i <= currentYear; i++){
             annee.addItem(i);
         }
         
         annee.setSelectedIndex(currentYear - 1900);
-        
         annee.addActionListener(new ActionListener() {
 
             @Override
@@ -112,7 +107,8 @@ public class PlanningUI extends JPanel {
         
         this.setLayout(new BorderLayout());
         this.add(nord, BorderLayout.NORTH);
-        this.add(centre, BorderLayout.CENTER);        
+        this.add(centre, BorderLayout.CENTER);
+        this.add(new FicheEvtUI(this), BorderLayout.EAST);
     }
     
     /**
@@ -146,7 +142,7 @@ public class PlanningUI extends JPanel {
     public Evenement getSelectedEvt() {    
         
         /** Projet à completer **/
-
+        
         return null;
     }
     
@@ -174,6 +170,10 @@ public class PlanningUI extends JPanel {
             }
         }
         return daysInMonth;
+    }
+    
+    public String getSelectedDate(){
+        return selectedDay + "/" + (mois.getSelectedIndex() + 1) + "/" + (annee.getSelectedIndex() + 1900);
     }
     
     public void setCalendar(){
@@ -215,11 +215,13 @@ public class PlanningUI extends JPanel {
         
         for (int i = 1; i <= nombreJours; i++){
             jours.add(new JButton(Integer.toString(i)));
+            final int v = i;
             jours.get(nb).addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    System.out.println("Test");
+                    selectedDay = v;
+                    System.out.println(getSelectedDate());
                 }
             });
             if (i==currentDay && m==currentMonth && y==currentYear){
