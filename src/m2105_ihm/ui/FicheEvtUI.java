@@ -3,12 +3,16 @@
  */
 package m2105_ihm.ui;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import m2105_ihm.nf.Mois;
 import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
+import m2105_ihm.nf.Mois;
 
 /**
  *
@@ -21,6 +25,10 @@ public class FicheEvtUI extends javax.swing.JPanel {
      */
     private PlanningUI planning;
     private JTextField intitule;
+    private JButton enregistrer;
+    private JButton annuler;
+    private GridBagConstraints contrainteLayout;
+    
     
     /**
      * Creates new form CarnetUI
@@ -48,15 +56,37 @@ public class FicheEvtUI extends javax.swing.JPanel {
      */    
     private void initUIComponents() {
         
-        /** Projet : à compléter **/    
         
-        this.add(new JLabel("Intitulé : "));
+        //mise en place du layout
+        this.setLayout(new GridBagLayout());
         
+        //élements
         intitule = new JTextField(15);
-        this.add(intitule);
+        enregistrer = new JButton("Enregistrer");
+        annuler = new JButton("Annuler");
+        contrainteLayout = new GridBagConstraints();
         
-        this.add(new JLabel(planning.getSelectedDate()));
+        //ajout des composants
+        contrainteLayout.gridx = 0;
+        contrainteLayout.gridy = 0;
+        this.add(new JLabel("Intitulé : "), contrainteLayout);
         
+        contrainteLayout.gridx = 1;
+        contrainteLayout.gridy = 0;
+        this.add(intitule, contrainteLayout);
+        
+        contrainteLayout.gridx = 3;
+        contrainteLayout.gridy = 0;
+        this.add(new JLabel(planning.getSelectedDate()), contrainteLayout);
+        
+        contrainteLayout.gridx = 0;
+        contrainteLayout.gridy = 1;
+        this.add(enregistrer, contrainteLayout);
+
+        contrainteLayout.gridx = 1;
+        contrainteLayout.gridy = 1;
+        this.add(annuler, contrainteLayout);
+               
     }
 
     /**
