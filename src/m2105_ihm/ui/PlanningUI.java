@@ -33,7 +33,6 @@ public class PlanningUI extends JPanel {
     private JComboBox annee;
     private ArrayList<JButton> jours;
     private int selectedDay = Calendar.getInstance().getTime().getDay();
-    private int selectedButton;
     private ArrayList<Evenement> listeEvenements;
 
     /**
@@ -270,13 +269,11 @@ public class PlanningUI extends JPanel {
         for (int i = 1; i <= nombreJours; i++) {
             jours.add(new JButton(Integer.toString(i)));
             final int v = i;
-            final int w = nb;
             jours.get(nb).addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     selectedDay = v;
-                    selectedButton = w;
                     System.out.println(getSelectedDate());
                     PlanningUI.this.remove(ficheEvt);
                     ficheEvt = new FicheEvtUI(PlanningUI.this);
