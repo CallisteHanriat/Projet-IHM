@@ -112,7 +112,8 @@ public class PlanningUI extends JPanel {
     }
 
     /**
-     * 
+     * Ajoute un évènement à la liste des évènements
+     * et re-set le calendrier pour l'afficher avec le nouvel évènement
      * 
      * @param evt l'évènement à ajouter
      * @return true ou false suivant si l'évènement a bien été ajouté ou non
@@ -129,7 +130,8 @@ public class PlanningUI extends JPanel {
     }
 
     /**
-     * 
+     * Retire un évènement à la liste des évènements
+     * et re-set le calendrier pour l'afficher sans l'ancien évènement
      * 
      * @param evt l'évènement à retirer
      * @return rue ou false suivant si l'évènement a bien été retiré ou non
