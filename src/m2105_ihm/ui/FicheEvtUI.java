@@ -6,6 +6,8 @@ package m2105_ihm.ui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -45,6 +47,13 @@ public class FicheEvtUI extends javax.swing.JPanel {
     private void initListeners() {
         
         /** Projet : à compléter **/
+        
+        enregistrer.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
         
     }
     

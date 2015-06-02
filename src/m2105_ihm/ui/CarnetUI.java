@@ -82,7 +82,8 @@ public class CarnetUI extends JPanel {
 
     /**
      * Retourne le contact sélectionné
-     * @return 
+     * 
+     * @return le contact sélectionné
      */
     public Contact getSelectedContact() {
         return listeContacts.getSelectedContact();
@@ -97,6 +98,7 @@ public class CarnetUI extends JPanel {
     
     /**
      * Ajoute une entrée dans le carnet pour les contacts
+     * 
      * @param Contact objet contact associé
      */
     public boolean ajouterContact(Contact contact) {
@@ -105,6 +107,7 @@ public class CarnetUI extends JPanel {
     
     /**
      * Retire une entrée dans le carnet pour les contacts
+     * 
      * @param Contact contact à retirer
      */    
     public boolean retirerContact(Contact contact) {
@@ -113,6 +116,7 @@ public class CarnetUI extends JPanel {
 
     /**
      * Ajoute une entrée dans le carnet pour les groupes
+     * 
      * @param title texte affiché dans l'arbre pour un groupe
      * @param GroupeContacts groupe de contacts associé
      */
@@ -122,6 +126,7 @@ public class CarnetUI extends JPanel {
     
     /**
      * Retire une entrée dans le carnet pour les groupe
+     * 
      * @param GroupeContacts groupe que l'on veut retirer
      */    
     public boolean retirerGroupe(GroupeContacts groupe) {
@@ -167,12 +172,12 @@ public class CarnetUI extends JPanel {
         } else {
             if (item instanceof Contact) {
                 controleur.setContactSelected(true);
-                ficheContact.setValues((Contact) item); // affiche les données du contact                 
+                ficheContact.setValues((Contact) item);
                 fiches.show(cardPanel,"contact");                
             } else if (item instanceof GroupeContacts) {
                 controleur.setContactSelected(false);
-                fiches.show(cardPanel,"groupe");                                
-                ficheGroupe.setValues((GroupeContacts) item); // affiche les données du groupe        
+                ficheGroupe.setValues((GroupeContacts) item);
+                fiches.show(cardPanel,"groupe");       
             }
         }
     }

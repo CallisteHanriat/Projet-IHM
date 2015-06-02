@@ -33,6 +33,7 @@ public class PlanningUI extends JPanel {
     private ArrayList<JButton> jours;
     private int selectedDay = Calendar.getInstance().getTime().getDay();
     private int selectedButton;
+    private ArrayList<Evenement> listeEvenements;
 
     /**
      * Constructeur : initialise les composants de l'IHM pour les événements
@@ -109,32 +110,42 @@ public class PlanningUI extends JPanel {
     }
 
     /**
-     * Ajoute une entrée dans la liste de événements
-     *
-     * @param title texte affiché dans la liste pour un contact
-     * @param Contact objet contact associé
+     * 
+     * 
+     * @param evt l'évènement à ajouter
+     * @return true ou false suivant si l'évènement a bien été ajouté ou non
      */
     public boolean ajouterEvt(Evenement evt) {
         if (evt == null) {
             return false;
         }
         
+        listeEvenements.add(evt);
+        
+        /**
+         * Il faut mettre à jour l'affichage pour afficher l'évènement 
+         */
+        
         return true;
     }
 
     /**
-     * Retire une entrée dans l'arbre pour les contacts
-     *
-     * @param Contact contact à retirer
+     * 
+     * 
+     * @param evt l'évènement à retirer
+     * @return rue ou false suivant si l'évènement a bien été retiré ou non
      */
     public boolean retirerEvt(Evenement evt) {
         if (evt == null) {
             return false;
         }
 
+        listeEvenements.remove(evt);
+        
         /**
-         * Projet à completer *
+         * Il faut mettre à jour l'affichage pour enlever l'évènement 
          */
+        
         return false;
     }
 
@@ -145,10 +156,9 @@ public class PlanningUI extends JPanel {
      */
     public Evenement getSelectedEvt() {
 
-        /**
-         * Projet à completer *
-         */
-        return null;
+        Evenement evenement = null;
+        
+        return evenement;
     }
 
     /**

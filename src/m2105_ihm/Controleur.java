@@ -19,14 +19,8 @@ import m2105_ihm.ui.BoiteDialogUI;
  */
 public class Controleur {
     
-    /*
-     * Noyau Fonctionnel
-     */    
     NoyauFonctionnel nf;
             
-    /*
-     * Composants
-     */
     private CarnetUI carnetUI;
     private FenetreUI fenetre;
     private PlanningUI planningUI;
@@ -65,7 +59,8 @@ public class Controleur {
     public void creerGroupe() {
         GroupeContacts groupe = new GroupeContacts();
         nf.addGroupe(groupe);
-        carnetUI.ajouterGroupe(groupe);    }
+        carnetUI.ajouterGroupe(groupe);    
+    }
 
     /**
      * Action supprimer un groupe de contacts
@@ -74,6 +69,9 @@ public class Controleur {
         nf.removeGroupe(carnetUI.getSelectedGroupe());
     }
     
+    /**
+     * Ajoute un contact à un groupe donné à l'aide d'une pop-up
+     */
     public void ajouterContactGroupe() {
         Contact contactAAjouter = carnetUI.getSelectedContact();
         GroupeContacts groupe = BoiteDialogUI.afficherChoixMembreContact(fenetre, "Choisir groupe dans lequel le mec va aller", nf.getGroupes());
@@ -82,6 +80,9 @@ public class Controleur {
         }
     }
     
+    /**
+     * Supprime un contact d'un groupe à l'aide d'une pop-up
+     */
     public void supprimerContactGroupe() {
         Contact contactASupprimer = carnetUI.getSelectedContact();
         GroupeContacts groupe = BoiteDialogUI.afficherChoixMembreContact(fenetre, "Choisir groupe dans lequel le mec n'est plus accepté", nf.getGroupesContact(contactASupprimer));
@@ -92,32 +93,26 @@ public class Controleur {
     /**
      * Crée un nouvel événement
      */
-    
-    
     public void creerEvenement() {
-    
        Evenement evenement = new Evenement();
        nf.addEvenement(evenement);
-       planningUI.ajouterEvt(evenement);
-       
+       planningUI.ajouterEvt(evenement);       
     }
 
     /**
      * Supprime un événement existant
      */
     public void supprimerEvenement() {
-       
-       /** Projet **/
-       
+        nf.removeEvenement(planningUI.getSelectedEvt());
     }
     
     /**
      * Ajouter un participant à un événement
      */
     public void ajouterParticipantEvenement() {
-    
+        
        /** Projet **/
-           
+        
     }
 
     /**
@@ -181,7 +176,6 @@ public class Controleur {
     
     public void setContactSelected(boolean selected) {
         fenetre.setMenuContactSelected(selected);
-        
     }
     
     public void setEvtSelected(boolean selected) {
