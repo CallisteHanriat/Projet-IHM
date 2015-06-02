@@ -3,24 +3,35 @@
  */
 package m2105_ihm.ui;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+<<<<<<< HEAD
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+=======
+import javax.swing.BorderFactory;
+>>>>>>> eb9512f4179be243d2d0746492b82e11771e4392
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import m2105_ihm.nf.Mois;
 import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
+import m2105_ihm.nf.Mois;
 
 /**
  *
  * @author IUT2
  */
 public class FicheEvtUI extends javax.swing.JPanel {
-    
-    /*
-     * Attributs
-     */
+
     private PlanningUI planning;
     private JTextField intitule;
+    private JButton enregistrer;
+    private JButton annuler;
+    private GridBagConstraints contrainteLayout;
+    
     
     /**
      * Creates new form CarnetUI
@@ -41,6 +52,13 @@ public class FicheEvtUI extends javax.swing.JPanel {
         
         /** Projet : à compléter **/
         
+        enregistrer.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+        
     }
     
     /**
@@ -48,15 +66,39 @@ public class FicheEvtUI extends javax.swing.JPanel {
      */    
     private void initUIComponents() {
         
-        /** Projet : à compléter **/    
         
-        this.add(new JLabel("Intitulé : "));
-        
+        //mise en place du layout
+        this.setLayout(new GridBagLayout());
+        this.setBorder(BorderFactory.createTitledBorder(planning.getSelectedDate()));
+        //élements
         intitule = new JTextField(15);
-        this.add(intitule);
+        enregistrer = new JButton("Enregistrer");
+        annuler = new JButton("Annuler");
+        contrainteLayout = new GridBagConstraints();
         
-        this.add(new JLabel(planning.getSelectedDate()));
+        //ajout des composants
+        contrainteLayout.gridx = 0;
+        contrainteLayout.gridy = 0;
+        contrainteLayout.weightx = 1.;
+        contrainteLayout.anchor = GridBagConstraints.CENTER;
+        this.add(new JLabel("Intitulé : "), contrainteLayout);
         
+        contrainteLayout.gridx = 1;
+        contrainteLayout.gridy = 0;
+        this.add(intitule, contrainteLayout);
+        
+        contrainteLayout.gridx = 2;
+        contrainteLayout.gridy = 0;
+        this.add(new JLabel(planning.getSelectedDate()), contrainteLayout);
+        
+        contrainteLayout.gridx = 1;
+        contrainteLayout.gridy = 1;
+        this.add(enregistrer, contrainteLayout);
+
+        contrainteLayout.gridx = 2;
+        contrainteLayout.gridy = 1;
+        this.add(annuler, contrainteLayout);
+               
     }
 
     /**

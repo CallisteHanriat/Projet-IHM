@@ -28,6 +28,16 @@ public class FenetreUI extends JFrame {
     /*
      * Composants
      */
+    private JTabbedPane tabs;    
+    private Controleur controleur;    
+    
+    private boolean contactSelected = true;
+    private boolean evtSelected = false;    
+    
+    private static final int MENU_FICHIER    = 0;
+    private static final int MENU_CONTACTS   = 1;
+    private static final int MENU_EVENEMENTS = 2;        
+    
     private JMenuItem [] menuFichier;
     private JMenuItem [] menuContacts;
     private JMenuItem [] menuEvenements; // à utiliser pour le mini projet    
@@ -189,8 +199,6 @@ public class FenetreUI extends JFrame {
      */
     private JMenu initMenuEvenements() {
         
-        /* A compléter mini Projet */
-        
         JMenu menu = new JMenu("Evenements");
         
         menuEvenements[0] = new JMenuItem("Créer un évenement");
@@ -217,7 +225,8 @@ public class FenetreUI extends JFrame {
     }
     
     /**
-     * Ajoute un onglet au contenu de la fentre
+     * Ajoute un onglet au contenu de la fenêtre
+     * 
      * @param onglet un panel a ajouter
      * @param titre titre de l'onglet
      */
@@ -237,6 +246,7 @@ public class FenetreUI extends JFrame {
 
     /**
     * Indique si un événement est sélectionné
+    * 
     * @param selected vrai si un événement est sélectionné
     */
     public void setMenuEvenementSelected(boolean selected) {
@@ -325,12 +335,4 @@ public class FenetreUI extends JFrame {
                 break;
         }
     }            
-
-    private JTabbedPane tabs;    
-    private Controleur controleur;    
-    private boolean contactSelected = true;
-    private boolean evtSelected = false;    
-    private static final int MENU_FICHIER    = 0;
-    private static final int MENU_CONTACTS   = 1;
-    private static final int MENU_EVENEMENTS = 2;        
 }

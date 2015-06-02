@@ -24,9 +24,6 @@ import m2105_ihm.nf.Mois;
  */
 public class PlanningUI extends JPanel {
 
-    /**
-     * Creates new form CarnetUI
-     */
     private Controleur controleur;
     private JPanel nord;
     private JPanel centre;
@@ -35,6 +32,8 @@ public class PlanningUI extends JPanel {
     private JComboBox annee;
     private ArrayList<JButton> jours;
     private int selectedDay = Calendar.getInstance().getTime().getDay();
+    private int selectedButton;
+    private ArrayList<Evenement> listeEvenements;
 
     /**
      * Constructeur : initialise les composants de l'IHM pour les événements
@@ -111,49 +110,65 @@ public class PlanningUI extends JPanel {
     }
 
     /**
-     * Ajoute une entrée dans la liste de événements
-     *
-     * @param title texte affiché dans la liste pour un contact
-     * @param Contact objet contact associé
+     * 
+     * 
+     * @param evt l'évènement à ajouter
+     * @return true ou false suivant si l'évènement a bien été ajouté ou non
      */
     public boolean ajouterEvt(Evenement evt) {
         if (evt == null) {
             return false;
         }
-
+        
+        listeEvenements.add(evt);
+        
         /**
-         * Projet à completer *
+         * Il faut mettre à jour l'affichage pour afficher l'évènement 
          */
+        
         return true;
     }
 
     /**
-     * Retire une entrée dans l'arbre pour les contacts
-     *
-     * @param Contact contact à retirer
+     * 
+     * 
+     * @param evt l'évènement à retirer
+     * @return rue ou false suivant si l'évènement a bien été retiré ou non
      */
     public boolean retirerEvt(Evenement evt) {
         if (evt == null) {
             return false;
         }
 
+        listeEvenements.remove(evt);
+        
         /**
-         * Projet à completer *
+         * Il faut mettre à jour l'affichage pour enlever l'évènement 
          */
+        
         return false;
     }
 
-    /*
-     * Retourne l'événement sélectionné
+    /**
+     * Renvoie l'évènement sélectionné
+     * 
+     * @return l'évènement sélectionné l
      */
     public Evenement getSelectedEvt() {
 
-        /**
-         * Projet à completer *
-         */
-        return null;
+        Evenement evenement = null;
+        
+        return evenement;
     }
 
+    /**
+     * Renvoie le jour de la semaine correspondant à une date
+     * 
+     * @param m le mois
+     * @param d le numéro du jour
+     * @param y l'année
+     * @return le jour de la semaine
+     */
     public static int getDayOfDate(int m, int d, int y) {
         int z = y - 1;
         int D;
@@ -165,6 +180,13 @@ public class PlanningUI extends JPanel {
         return D;
     }
 
+    /**
+     * Renvoie le nombre de jour dans un mois
+     * 
+     * @param month le mois
+     * @param year l'année
+     * @return le nombre de jour dans le mois
+     */
     public static int getNumberOfDayInMonth(int month, int year) {
         Boolean leapYear = (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
         int daysInMonth;
@@ -180,10 +202,18 @@ public class PlanningUI extends JPanel {
         return daysInMonth;
     }
 
+    /**
+     * Renvoie la date sélectionnée
+     * 
+     * @return la date sélectionnée
+     */
     public String getSelectedDate() {
         return selectedDay + "/" + (mois.getSelectedIndex() + 1) + "/" + (annee.getSelectedIndex() + 1900);
     }
 
+    /**
+     * Mets en place le calendrier affiché sur l'interface
+     */
     public void setCalendar() {
         centre.removeAll();
 
@@ -224,11 +254,13 @@ public class PlanningUI extends JPanel {
         for (int i = 1; i <= nombreJours; i++) {
             jours.add(new JButton(Integer.toString(i)));
             final int v = i;
+            final int w = nb;
             jours.get(nb).addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     selectedDay = v;
+                    selectedButton = w;
                     System.out.println(getSelectedDate());
                     PlanningUI.this.remove(ficheEvt);
                     ficheEvt = new FicheEvtUI(PlanningUI.this);
