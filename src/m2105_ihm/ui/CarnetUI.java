@@ -23,14 +23,14 @@ public class CarnetUI extends JPanel {
     /*
      * Composants de l'interface
      */
-    private CardLayout             fiches;
-    private JPanel                 cardPanel;    
-    private ListeContacts          listeContacts;
+    private CardLayout fiches;
+    private JPanel cardPanel;    
+    private ListeContacts listeContacts;
 
-    private FicheGroupeUI          ficheGroupe;    
-    private FicheContactUI         ficheContact;
+    private FicheGroupeUI ficheGroupe;    
+    private FicheContactUI ficheContact;
         
-    protected Controleur           controleur;
+    protected Controleur controleur;
 
     /**
      * Panel pour le carnet de contacts

@@ -254,8 +254,7 @@ public class FicheContactUI extends JPanel {
      */
     public boolean setValues(Contact contact) {
         if (contact == null) { return false; }
-        
-        /** TP 1 : à compléter **/
+
         champPrenom.setText(contact.getPrenom());
         champEmail.setText(contact.getEmail());
         moi.setSelectedItem(contact.getDateNaissanceMois());

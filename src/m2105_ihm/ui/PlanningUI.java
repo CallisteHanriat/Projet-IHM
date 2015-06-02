@@ -28,12 +28,13 @@ public class PlanningUI extends JPanel {
     private Controleur controleur;
     private JPanel nord;
     private JPanel centre;
-    private JPanel ficheEvt;
+    private FicheEvtUI ficheEvt;
     private JComboBox mois;
     private JComboBox annee;
     private ArrayList<JButton> jours;
     private int selectedDay = Calendar.getInstance().getTime().getDay();
     private ArrayList<Evenement> listeEvenements;
+    private Evenement selectedEvenement = null;
 
     /**
      * Constructeur : initialise les composants de l'IHM pour les événements
@@ -152,11 +153,8 @@ public class PlanningUI extends JPanel {
      * 
      * @return l'évènement sélectionné l
      */
-    public Evenement getSelectedEvt() {
-
-        Evenement evenement = null;
-        
-        return evenement;
+    public Evenement getSelectedEvt() {        
+        return selectedEvenement;
     }
 
     /**
@@ -271,18 +269,8 @@ public class PlanningUI extends JPanel {
         for (int i = 1; i <= nombreJours; i++) {
             jours.add(new JButton(Integer.toString(i)));
             final int v = i;
-            jours.get(nb).addActionListener(new ActionListener() {
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    selectedDay = v;
-                    System.out.println(getSelectedDate());
-                    PlanningUI.this.remove(ficheEvt);
-                    ficheEvt = new FicheEvtUI(PlanningUI.this);
-                    PlanningUI.this.add(ficheEvt, BorderLayout.EAST);
-                    ficheEvt.updateUI();
-                }
-            });
+            Evenement ev = null;
+            
             /**
              * On parcours les évènements, et on le signale par un changement
              * de couleur si il y en a un dans le mois
@@ -291,9 +279,28 @@ public class PlanningUI extends JPanel {
                 if (evenement.getDateJour() == i && (evenement.getDateMois().ordinal() + 1) == m && evenement.getDateAnnee() == y){
                     jours.get(nb).setBackground(Color.yellow);
                     System.out.println("Evenement le " + i + "/" + m + "/" + y + " : " + evenement.getIntitule());
+                    ev = evenement;
                     break;
                 }
             }
+            
+            final Evenement event = ev;
+            
+            jours.get(nb).addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    selectedDay = v;
+                    selectedEvenement = event;
+                    System.out.println(getSelectedDate());
+                    PlanningUI.this.remove(ficheEvt);
+                    ficheEvt = new FicheEvtUI(PlanningUI.this);
+                    ficheEvt.setValues(event);
+                    PlanningUI.this.add(ficheEvt, BorderLayout.EAST);
+                    ficheEvt.updateUI();
+                }
+            });
+            
             if (i == currentDay && m == currentMonth && y == currentYear) {
                 jours.get(nb).setBackground(Color.ORANGE);
             }

@@ -96,9 +96,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
      * @return
      */        
     public boolean setValues(Evenement event) {
-        if (event == null) { return false; }            
-                  
-        /** Projet : à compléter **/
+        if (event == null) { return false; }
         
         intitule.setText(event.getIntitule());
             
@@ -113,8 +111,6 @@ public class FicheEvtUI extends javax.swing.JPanel {
     public boolean getValues(Evenement event) {
         
         if (event == null) { return false; }
-        
-        /** Projet : à compléter **/
        
         event.setIntitule(intitule.getText());
         
