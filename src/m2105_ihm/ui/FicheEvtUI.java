@@ -20,10 +20,7 @@ import m2105_ihm.nf.Mois;
  * @author IUT2
  */
 public class FicheEvtUI extends javax.swing.JPanel {
-    
-    /*
-     * Attributs
-     */
+
     private PlanningUI planning;
     private JTextField intitule;
     private JButton enregistrer;
