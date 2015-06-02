@@ -85,7 +85,6 @@ public class FicheGroupeUI extends javax.swing.JPanel {
         contrainteGrilleFenetreJpanel.weighty = 3.;
         contrainteGrilleFenetreJpanel.weightx = 1.;
         contrainteGrilleFenetreJpanel.anchor = GridBagConstraints.LINE_START;
-        contrainteGrilleFenetreJpanel.gridwidth = GridBagConstraints.REMAINDER;
         contrainteGrilleFenetreJpanel.gridheight = 1;
         contrainteGrilleFenetreJpanel.fill = GridBagConstraints.BOTH;
         this.add(infosGroupeGeneralPanel, contrainteGrilleFenetreJpanel);

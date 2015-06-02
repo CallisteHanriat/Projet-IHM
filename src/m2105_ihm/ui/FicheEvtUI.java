@@ -6,8 +6,12 @@ package m2105_ihm.ui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+<<<<<<< HEAD
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+=======
+import javax.swing.BorderFactory;
+>>>>>>> eb9512f4179be243d2d0746492b82e11771e4392
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -65,7 +69,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
         
         //mise en place du layout
         this.setLayout(new GridBagLayout());
-        
+        this.setBorder(BorderFactory.createTitledBorder(planning.getSelectedDate()));
         //élements
         intitule = new JTextField(15);
         enregistrer = new JButton("Enregistrer");
@@ -75,21 +79,23 @@ public class FicheEvtUI extends javax.swing.JPanel {
         //ajout des composants
         contrainteLayout.gridx = 0;
         contrainteLayout.gridy = 0;
+        contrainteLayout.weightx = 1.;
+        contrainteLayout.anchor = GridBagConstraints.CENTER;
         this.add(new JLabel("Intitulé : "), contrainteLayout);
         
         contrainteLayout.gridx = 1;
         contrainteLayout.gridy = 0;
         this.add(intitule, contrainteLayout);
         
-        contrainteLayout.gridx = 3;
+        contrainteLayout.gridx = 2;
         contrainteLayout.gridy = 0;
         this.add(new JLabel(planning.getSelectedDate()), contrainteLayout);
         
-        contrainteLayout.gridx = 0;
+        contrainteLayout.gridx = 1;
         contrainteLayout.gridy = 1;
         this.add(enregistrer, contrainteLayout);
 
-        contrainteLayout.gridx = 1;
+        contrainteLayout.gridx = 2;
         contrainteLayout.gridy = 1;
         this.add(annuler, contrainteLayout);
                
