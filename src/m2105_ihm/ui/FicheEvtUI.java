@@ -15,10 +15,7 @@ import m2105_ihm.nf.Evenement;
  * @author IUT2
  */
 public class FicheEvtUI extends javax.swing.JPanel {
-    
-    /*
-     * Attributs
-     */
+
     private PlanningUI planning;
     private JTextField intitule;
     

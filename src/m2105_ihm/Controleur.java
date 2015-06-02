@@ -43,8 +43,6 @@ public class Controleur {
      * Action créer un nouveau contact
      */
     public void creerContact() {
-        
-        /** TP5 : à compléter **/
         Contact contact = new Contact();
         nf.addContact(contact);
         carnetUI.ajouterContact(contact);        
@@ -54,23 +52,17 @@ public class Controleur {
      * Action supprimer contact
      */
     public void supprimerContact() {
-        
-        /** TP5 : à compléter **/
         Contact c = (carnetUI.getSelectedContact());
         if (BoiteDialogUI.afficherConfirmation(fenetre, c)) {
             nf.removeContact(c);
             carnetUI.retirerContact(c);
         }
     }
-        
-    
     
     /**
      * Action créer un groupe de contacts
      */
     public void creerGroupe() {
-        
-        /** TP5 : à compléter **/
         GroupeContacts groupe = new GroupeContacts();
         nf.addGroupe(groupe);
         carnetUI.ajouterGroupe(groupe);    }
@@ -79,8 +71,6 @@ public class Controleur {
      * Action supprimer un groupe de contacts
      */
     public void supprimerGroupe() {
-        
-        /** TP5 : à compléter **/
         nf.removeGroupe(carnetUI.getSelectedGroupe());
     }
     
@@ -106,7 +96,9 @@ public class Controleur {
     
     public void creerEvenement() {
     
-       /** Projet **/
+       Evenement evenement = new Evenement();
+       nf.addEvenement(evenement);
+       planningUI.ajouterEvt(evenement);
        
     }
 
