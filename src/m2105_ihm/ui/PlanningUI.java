@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -44,7 +45,9 @@ public class PlanningUI extends JPanel {
         super();
 
         this.controleur = ctrl;
-
+        
+        this.listeEvenements = new ArrayList<>();
+        
         initComponents();
     }
 
@@ -121,10 +124,7 @@ public class PlanningUI extends JPanel {
         }
         
         listeEvenements.add(evt);
-        
-        /**
-         * Il faut mettre à jour l'affichage pour afficher l'évènement 
-         */
+        setCalendar();
         
         return true;
     }
@@ -141,14 +141,11 @@ public class PlanningUI extends JPanel {
         }
 
         listeEvenements.remove(evt);
-        
-        /**
-         * Il faut mettre à jour l'affichage pour enlever l'évènement 
-         */
+        setCalendar();
         
         return false;
     }
-
+    
     /**
      * Renvoie l'évènement sélectionné
      * 
@@ -213,10 +210,17 @@ public class PlanningUI extends JPanel {
 
     /**
      * Mets en place le calendrier affiché sur l'interface
+     * et l'affiche
      */
     public void setCalendar() {
+        /**
+         * On efface tout
+         */
         centre.removeAll();
 
+        /**
+         * On affiche les jours de la semaine
+         */
         centre.add(new JLabel("Lundi"));
         centre.add(new JLabel("Mardi"));
         centre.add(new JLabel("Mercredi"));
@@ -225,19 +229,27 @@ public class PlanningUI extends JPanel {
         centre.add(new JLabel("Samedi"));
         centre.add(new JLabel("Dimanche"));
 
+        /**
+         * On récupère la date sélectionnée
+         */
         int m = mois.getSelectedIndex() + 1;
         int d = 1;
         int y = annee.getSelectedIndex() + 1900;
 
+        /**
+         * On calcule le premier jour du mois
+         */
         int D = getDayOfDate(m, d, y);
-
-        System.out.println("Mois : " + m + "\nAnnée : " + y + "\nJour : " + D);
 
         int nb = 0;
         jours = new ArrayList<>();
 
         int nombreJours = getNumberOfDayInMonth(m - 1, y);
 
+        /**
+         * On ajoute des boutons grisés à l'interface jusqu'au 
+         * premier jour du mois
+         */
         for (int i = 1; i < D; i++) {
             jours.add(new JButton(Integer.toString(i + 1 + nombreJours - D)));
             jours.get(nb).setEnabled(false);
@@ -251,6 +263,10 @@ public class PlanningUI extends JPanel {
         int currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
+        /**
+         * On ajoute les boutons pour chaque jour du mois
+         * qui permettent d'ajouter des évenements
+         */
         for (int i = 1; i <= nombreJours; i++) {
             jours.add(new JButton(Integer.toString(i)));
             final int v = i;
@@ -268,6 +284,17 @@ public class PlanningUI extends JPanel {
                     ficheEvt.updateUI();
                 }
             });
+            /**
+             * On parcours les évènements, et on le signale par un changement
+             * de couleur si il y en a un dans le mois
+             */
+            for (Evenement evenement : listeEvenements){
+                if (evenement.getDateJour() == i && (evenement.getDateMois().ordinal() + 1) == m && evenement.getDateAnnee() == y){
+                    jours.get(nb).setBackground(Color.yellow);
+                    System.out.println("Evenement le " + i + "/" + m + "/" + y + " : " + evenement.getIntitule());
+                    break;
+                }
+            }
             if (i == currentDay && m == currentMonth && y == currentYear) {
                 jours.get(nb).setBackground(Color.ORANGE);
             }
@@ -275,6 +302,10 @@ public class PlanningUI extends JPanel {
             nb++;
         }
 
+        /**
+         * On ajoute ou non des jours permettant de faire un tableau
+         * complet de jour
+         */
         if (nb > 35) {
             int i = 1;
             while (nb < 42) {
@@ -300,5 +331,6 @@ public class PlanningUI extends JPanel {
                 centre.setLayout(new GridLayout(5, 7));
             }
         }
+        centre.setBorder(BorderFactory.createTitledBorder("Calendrier"));
     }
 }

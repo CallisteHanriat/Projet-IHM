@@ -6,12 +6,9 @@ package m2105_ihm.ui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-<<<<<<< HEAD
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-=======
 import javax.swing.BorderFactory;
->>>>>>> eb9512f4179be243d2d0746492b82e11771e4392
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,10 +17,6 @@ import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
 import m2105_ihm.nf.Mois;
 
-/**
- *
- * @author IUT2
- */
 public class FicheEvtUI extends javax.swing.JPanel {
 
     private PlanningUI planning;
@@ -86,10 +79,6 @@ public class FicheEvtUI extends javax.swing.JPanel {
         contrainteLayout.gridx = 1;
         contrainteLayout.gridy = 0;
         this.add(intitule, contrainteLayout);
-        
-        contrainteLayout.gridx = 2;
-        contrainteLayout.gridy = 0;
-        this.add(new JLabel(planning.getSelectedDate()), contrainteLayout);
         
         contrainteLayout.gridx = 1;
         contrainteLayout.gridy = 1;
