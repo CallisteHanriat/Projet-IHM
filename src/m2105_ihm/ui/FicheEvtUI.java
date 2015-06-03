@@ -72,37 +72,45 @@ public class FicheEvtUI extends javax.swing.JPanel {
         if (planning.getSelectedEvt() != null){
             //mise en place du layout
             this.setLayout(new GridBagLayout());
+            
             //élements
-            intitule = new JTextField(15);
-            enregistrer = new JButton("Enregistrer");
-            annuler = new JButton("Annuler");
             contrainteLayout = new GridBagConstraints();
             ajouterParticipants = new JButton("Ajouter participants");
             retirerParticipants = new JButton("Retirer participants");
-
+            
             //ajout des composants
             contrainteLayout.gridx = 0;
             contrainteLayout.gridy = 0;
+            contrainteLayout.weightx = 1;
+            contrainteLayout.anchor = GridBagConstraints.CENTER;
             contrainteLayout.weightx = 1.;
             this.add(new JLabel("Intitulé : "), contrainteLayout);
 
             contrainteLayout.gridx = 1;
             contrainteLayout.gridy = 0;
+            intitule = new JTextField(15);
             this.add(intitule, contrainteLayout);
+            
+            contrainteLayout.gridx = 1;
+            contrainteLayout.gridy = 3;
+            listeParticipants = new JList();
+            this.add(listeParticipants,contrainteLayout);
 
             contrainteLayout.gridx = 1;
             contrainteLayout.gridy = 1;
+            enregistrer = new JButton("Enregistrer");
             contrainteLayout.insets = new Insets(5, 0, 0, 5);
             this.add(enregistrer, contrainteLayout);
 
             contrainteLayout.gridx = 1;
             contrainteLayout.gridy = 2;
+            annuler = new JButton("Annuler");
             contrainteLayout.ipadx = 25; 
             this.add(annuler, contrainteLayout);
         } else{
             this.add(new JLabel("Il n'y a pas d'évènements pour ce jour !"));
         }
-               
+
     }
 
     /**
@@ -114,6 +122,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
         if (event == null) { return false; }
         
         intitule.setText(event.getIntitule());
+        listeParticipants.setListData(planning.getSelectedEvt().getParticipants());
             
         return false;
     }

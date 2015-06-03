@@ -172,8 +172,7 @@ public class FicheGroupeUI extends javax.swing.JPanel {
                 i++;
         }
         
-        
-        listeSymboles.setSelectedIndices(tab);       
+        listeSymboles.setSelectedIndices(tab);
         
         for ( i=0 ; i<modelTable.getRowCount(); i++) {
             modelTable.removeRow(i);
@@ -201,8 +200,7 @@ public class FicheGroupeUI extends javax.swing.JPanel {
      */    
     public boolean getValues(GroupeContacts groupe) {
         if (groupe == null) { return false; }
-        
-        /** TP 2 : à compléter **/
+
         for (Symbole s : groupe.getSymboles()) {
             groupe.removeSymbole(s);
         }
@@ -226,8 +224,7 @@ public class FicheGroupeUI extends javax.swing.JPanel {
         /*
          * Réagit aux évènements produits par le bouton effacer
          */
-        
-        /** TP 2 : à compléter **/
+
         boutonEfface.addActionListener(new ActionListener() {
 
             @Override
