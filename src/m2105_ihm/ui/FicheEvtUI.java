@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import m2105_ihm.nf.Contact;
@@ -23,6 +24,9 @@ public class FicheEvtUI extends javax.swing.JPanel {
     private JTextField intitule;
     private JButton enregistrer;
     private JButton annuler;
+    private JButton ajouterParticipants;
+    private JButton retirerParticipants;
+    private JList listeParticipants;
     private GridBagConstraints contrainteLayout;
     
     
@@ -72,6 +76,8 @@ public class FicheEvtUI extends javax.swing.JPanel {
             enregistrer = new JButton("Enregistrer");
             annuler = new JButton("Annuler");
             contrainteLayout = new GridBagConstraints();
+            ajouterParticipants = new JButton("Ajouter participants");
+            retirerParticipants = new JButton("Retirer participants");
 
             //ajout des composants
             contrainteLayout.gridx = 0;
@@ -88,8 +94,8 @@ public class FicheEvtUI extends javax.swing.JPanel {
             contrainteLayout.gridy = 1;
             this.add(enregistrer, contrainteLayout);
 
-            contrainteLayout.gridx = 2;
-            contrainteLayout.gridy = 1;
+            contrainteLayout.gridx = 1;
+            contrainteLayout.gridy = 2;
             this.add(annuler, contrainteLayout);
         } else{
             this.add(new JLabel("Il n'y a pas d'évènements pour ce jour !"));
