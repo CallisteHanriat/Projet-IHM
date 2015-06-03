@@ -68,6 +68,7 @@ public class FicheContactUI extends JPanel {
     private GridLayout grilleHobby;
     private JPanel dispoPanel;
     private GridLayout grilleDispoLayout;
+    private JPanel champsGauchePanel;
     
     private JButton boutonAccepter;
     private JButton boutonAnnuler;
@@ -128,6 +129,7 @@ public class FicheContactUI extends JPanel {
         grilleDispoLayout = new GridLayout();
         grilleBouton = new GridBagLayout();
         contrainteGrilleBouton  = new GridBagConstraints();
+        champsGauchePanel = new JPanel();
         
         //Mise en place des Layout pour les panels
         this.setLayout(grilleLayoutPrincipal);
@@ -137,7 +139,7 @@ public class FicheContactUI extends JPanel {
         this.hobbyPanel.setLayout(grilleHobby);
         this.dispoPanel.setLayout(grilleDispoLayout);
         this.boutonPanel.setLayout(grilleBouton);
-        
+
         //Propriétées sur les GridLayout
         this.infoGeneralPanel.setBorder(BorderFactory.createTitledBorder("informations générales"));
         this.centreInteretPanel.setBorder(BorderFactory.createTitledBorder("Centres d'intérêts"));
@@ -147,7 +149,6 @@ public class FicheContactUI extends JPanel {
         this.grilleCentreInteret.setColumns(2);
         this.grilleCentreInteret.setRows(2);
         this.grilleHobby.setRows(2);
-        
         
         //Ajouts sur la fenêtre des panels.
         this.add(infoGeneralPanel);
@@ -170,12 +171,13 @@ public class FicheContactUI extends JPanel {
         /*
          * Ajoute un label associé au champ pour la saisie du nom du contact
          */
-        this.infoGeneralPanel.add(new JLabel("Nom :"));
+        JLabel nom = new JLabel("Nom :", JLabel.RIGHT);
+        this.infoGeneralPanel.add(nom);
          /*
          * Ajoute dans l'IHM un champ pour la saisie/Affichage du nom
          */
         this.infoGeneralPanel.add(champNom);
-        this.infoGeneralPanel.add(new JLabel("Date de naissance : "));
+        this.infoGeneralPanel.add(new JLabel("Date de naissance : ", JLabel.RIGHT));
         
         for (int i=1; i<=31; i++) {
             sjour[i] = Integer.toString(i);
@@ -194,13 +196,13 @@ public class FicheContactUI extends JPanel {
         this.infoGeneralPanel.add(this.dateNaissancePanel);
         
         
-        this.infoGeneralPanel.add (new JLabel("Prénom : " )); 
+        this.infoGeneralPanel.add (new JLabel("Prénom : ", JLabel.RIGHT)); 
         this.infoGeneralPanel.add(champPrenom);
-        this.infoGeneralPanel.add (new JLabel("Email : " ));
+        this.infoGeneralPanel.add (new JLabel("Email : ", JLabel.RIGHT));
         this.infoGeneralPanel.add(champEmail);
-        this.infoGeneralPanel.add (new JLabel("Numero : " ));
+        this.infoGeneralPanel.add (new JLabel("Numero : ", JLabel.RIGHT));
         this.infoGeneralPanel.add(numeroTel);
-        this.infoGeneralPanel.add (new JLabel("Region : " ));
+        this.infoGeneralPanel.add (new JLabel("Region : ", JLabel.RIGHT));
         
         
         for (Region r : Region.values()) {
