@@ -94,9 +94,9 @@ public class Controleur {
      * Crée un nouvel événement
      */
     public void creerEvenement() {
-       Evenement evenement = new Evenement();
-       nf.addEvenement(evenement);
-       planningUI.ajouterEvt(evenement);       
+        Evenement evenement = new Evenement();
+        nf.addEvenement(evenement);
+        planningUI.ajouterEvt(evenement);       
     }
 
     /**

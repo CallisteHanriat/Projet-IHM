@@ -124,9 +124,6 @@ public class FenetreUI extends JFrame {
     private JMenu initMenuContacts() {
         JMenu menu = new JMenu("Contact");
         
-        
-        
-    /* TP 3 : à compléter */
         //ajout de la création du contact : 
         menuContacts[0] = new JMenuItem("Créer nouveau contact");
         menuContacts[0].addActionListener(new ActionListener() {
@@ -207,6 +204,7 @@ public class FenetreUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Créer un évenement");
+                controleur.creerEvenement();
             }
         });
         menu.add(menuEvenements[0]);
