@@ -6,6 +6,7 @@ package m2105_ihm.ui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -83,7 +84,6 @@ public class FicheEvtUI extends javax.swing.JPanel {
             contrainteLayout.gridx = 0;
             contrainteLayout.gridy = 0;
             contrainteLayout.weightx = 1.;
-            contrainteLayout.anchor = GridBagConstraints.CENTER;
             this.add(new JLabel("Intitulé : "), contrainteLayout);
 
             contrainteLayout.gridx = 1;
@@ -92,10 +92,12 @@ public class FicheEvtUI extends javax.swing.JPanel {
 
             contrainteLayout.gridx = 1;
             contrainteLayout.gridy = 1;
+            contrainteLayout.insets = new Insets(5, 0, 0, 5);
             this.add(enregistrer, contrainteLayout);
 
             contrainteLayout.gridx = 1;
             contrainteLayout.gridy = 2;
+            contrainteLayout.ipadx = 25; 
             this.add(annuler, contrainteLayout);
         } else{
             this.add(new JLabel("Il n'y a pas d'évènements pour ce jour !"));
