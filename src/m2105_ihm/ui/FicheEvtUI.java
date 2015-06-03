@@ -45,12 +45,14 @@ public class FicheEvtUI extends javax.swing.JPanel {
         
         /** Projet : à compléter **/
         
-        enregistrer.addActionListener(new ActionListener() {
+        if (enregistrer != null){
+            enregistrer.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                }
+            });
+        }
         
     }
     
@@ -59,34 +61,38 @@ public class FicheEvtUI extends javax.swing.JPanel {
      */    
     private void initUIComponents() {
         
-        
-        //mise en place du layout
-        this.setLayout(new GridBagLayout());
         this.setBorder(BorderFactory.createTitledBorder(planning.getSelectedDate()));
-        //élements
-        intitule = new JTextField(15);
-        enregistrer = new JButton("Enregistrer");
-        annuler = new JButton("Annuler");
-        contrainteLayout = new GridBagConstraints();
         
-        //ajout des composants
-        contrainteLayout.gridx = 0;
-        contrainteLayout.gridy = 0;
-        contrainteLayout.weightx = 1.;
-        contrainteLayout.anchor = GridBagConstraints.CENTER;
-        this.add(new JLabel("Intitulé : "), contrainteLayout);
-        
-        contrainteLayout.gridx = 1;
-        contrainteLayout.gridy = 0;
-        this.add(intitule, contrainteLayout);
-        
-        contrainteLayout.gridx = 1;
-        contrainteLayout.gridy = 1;
-        this.add(enregistrer, contrainteLayout);
+        if (planning.getSelectedEvt() != null){
+            //mise en place du layout
+            this.setLayout(new GridBagLayout());
+            //élements
+            intitule = new JTextField(15);
+            enregistrer = new JButton("Enregistrer");
+            annuler = new JButton("Annuler");
+            contrainteLayout = new GridBagConstraints();
 
-        contrainteLayout.gridx = 2;
-        contrainteLayout.gridy = 1;
-        this.add(annuler, contrainteLayout);
+            //ajout des composants
+            contrainteLayout.gridx = 0;
+            contrainteLayout.gridy = 0;
+            contrainteLayout.weightx = 1.;
+            contrainteLayout.anchor = GridBagConstraints.CENTER;
+            this.add(new JLabel("Intitulé : "), contrainteLayout);
+
+            contrainteLayout.gridx = 1;
+            contrainteLayout.gridy = 0;
+            this.add(intitule, contrainteLayout);
+
+            contrainteLayout.gridx = 1;
+            contrainteLayout.gridy = 1;
+            this.add(enregistrer, contrainteLayout);
+
+            contrainteLayout.gridx = 2;
+            contrainteLayout.gridy = 1;
+            this.add(annuler, contrainteLayout);
+        } else{
+            this.add(new JLabel("Il n'y a pas d'évènements pour ce jour !"));
+        }
                
     }
 

@@ -334,7 +334,6 @@ public class FicheContactUI extends JPanel {
      * Initialise la gestion des événements
      */
     private void initListeners() {
-        /** TP 5 : à compléter **/ 
         
         this.boutonAccepter.addActionListener(new ActionListener() {
             @Override
