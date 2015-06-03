@@ -297,7 +297,6 @@ public class FicheContactUI extends JPanel {
     public boolean getValues(Contact contact) {
         if (contact == null) { return false; }
         
-        /** TP 1 : à compléter **/
         contact.setPrenom(champPrenom.getText());
         contact.setEmail(champPrenom.getText());
         contact.setNumeroTelephone(numeroTel.getText());

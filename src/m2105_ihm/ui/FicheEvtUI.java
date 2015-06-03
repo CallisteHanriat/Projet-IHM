@@ -50,6 +50,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    planning.getSelectedEvt().setIntitule(intitule.getText());
                 }
             });
         }

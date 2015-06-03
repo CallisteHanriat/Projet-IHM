@@ -124,6 +124,10 @@ public class PlanningUI extends JPanel {
             return false;
         }
         
+        if (evt.getDateJour() == 1 && evt.getDateMois() == Mois.JANVIER && evt.getDateAnnee() == 1970){
+            evt.setDate(selectedDay, (Mois) mois.getSelectedItem(), annee.getSelectedIndex() + 1900);
+        }
+        
         listeEvenements.add(evt);
         setCalendar();
         
