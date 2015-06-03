@@ -6,6 +6,7 @@ package m2105_ihm.ui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -80,8 +81,12 @@ public class FicheEvtUI extends javax.swing.JPanel {
             //ajout des composants
             contrainteLayout.gridx = 0;
             contrainteLayout.gridy = 0;
+<<<<<<< HEAD
             contrainteLayout.weightx = 1;
             contrainteLayout.anchor = GridBagConstraints.CENTER;
+=======
+            contrainteLayout.weightx = 1.;
+>>>>>>> 081ded562f111941b3c8a7f878b33e44e7deafdc
             this.add(new JLabel("Intitulé : "), contrainteLayout);
 
             contrainteLayout.gridx = 1;
@@ -96,12 +101,20 @@ public class FicheEvtUI extends javax.swing.JPanel {
 
             contrainteLayout.gridx = 1;
             contrainteLayout.gridy = 1;
+<<<<<<< HEAD
             enregistrer = new JButton("Enregistrer");
+=======
+            contrainteLayout.insets = new Insets(5, 0, 0, 5);
+>>>>>>> 081ded562f111941b3c8a7f878b33e44e7deafdc
             this.add(enregistrer, contrainteLayout);
 
             contrainteLayout.gridx = 1;
             contrainteLayout.gridy = 2;
+<<<<<<< HEAD
             annuler = new JButton("Annuler");
+=======
+            contrainteLayout.ipadx = 25; 
+>>>>>>> 081ded562f111941b3c8a7f878b33e44e7deafdc
             this.add(annuler, contrainteLayout);
         } else{
             this.add(new JLabel("Il n'y a pas d'évènements pour ce jour !"));
