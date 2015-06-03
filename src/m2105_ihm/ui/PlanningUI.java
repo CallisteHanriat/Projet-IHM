@@ -129,6 +129,7 @@ public class PlanningUI extends JPanel {
         }
         
         listeEvenements.add(evt);
+        selectedEvenement = evt;
         setCalendar();
         
         return true;
@@ -308,6 +309,15 @@ public class PlanningUI extends JPanel {
             if (i == currentDay && m == currentMonth && y == currentYear) {
                 jours.get(nb).setBackground(Color.ORANGE);
             }
+            
+            if (ficheEvt != null){
+                this.remove(ficheEvt);
+            } 
+            ficheEvt = new FicheEvtUI(this);
+            ficheEvt.setValues(getSelectedEvt());
+            this.add(ficheEvt, BorderLayout.EAST);
+            ficheEvt.updateUI();
+            
             centre.add(jours.get(nb));
             nb++;
         }
