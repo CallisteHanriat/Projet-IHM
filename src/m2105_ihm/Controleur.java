@@ -135,7 +135,12 @@ public class Controleur {
      * Quitter l'application sans enregistrer les modifications
      */
     public void quitter() {
-        System.exit(0);
+        if (BoiteDialogUI.quitterSansEnregistrer(fenetre)){
+            nf.updateDB();
+            System.exit(0);
+        } else {
+            System.exit(0);
+        }
     }
 
     /**

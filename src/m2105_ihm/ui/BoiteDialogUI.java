@@ -95,4 +95,21 @@ public class BoiteDialogUI {
             
         }        return res;
     }    
+    
+    public static Boolean quitterSansEnregistrer(JFrame fenetre){
+        boolean res = false;
+        String [] choix = new String[] { "Enregistrer quitter", "Quitter sans enregistrer" }; 
+            
+        Object selectedValue = JOptionPane.showOptionDialog(fenetre,
+              "Voulez-vous vraiment quitter sans enregistrer ? ", 
+              "Quitter ?",
+              JOptionPane.DEFAULT_OPTION,
+              JOptionPane.QUESTION_MESSAGE, 
+              null,
+              choix,
+              choix[1]);
+        res = (((Integer) selectedValue) == 0);
+
+        return res;
+    }
 }
