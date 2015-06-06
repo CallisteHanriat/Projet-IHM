@@ -76,13 +76,12 @@ public class BoiteDialogUI {
     public static GroupeContacts afficherChoixMembreContact(JFrame fenetre, String titre, GroupeContacts [] groupes) {
         GroupeContacts res = null;
         int i = 0;
-        if (titre == null) { titre = ""; }
         
+        if (titre == null) { 
+            titre = ""; 
+        }
         
-        
-        /** TP5 : à compléter **/
         if (groupes != null) {
-            
             Object selectedValue = JOptionPane.showInputDialog(fenetre,
                   titre, 
                   "Choix d'un groupe",
@@ -92,9 +91,27 @@ public class BoiteDialogUI {
                   , groupes[0]);
             
             res = (GroupeContacts) selectedValue;
-            
-        }        return res;
+        }        
+        return res;
     }    
+    
+    public static Contact afficherChoixContactEvent(JFrame fenetre, Contact [] contacts) {
+        Contact res = null;
+        
+        if (contacts != null) {
+            Object selectedValue = JOptionPane.showInputDialog(fenetre,
+                  "Ajout d'un contact à un évènement", 
+                  "Choix du contact",
+                  JOptionPane.DEFAULT_OPTION, 
+                  null,
+                  contacts
+                  , contacts[0]);
+            
+            res = (Contact) selectedValue;
+        }
+        
+        return res;
+    }
     
     public static Boolean quitterSansEnregistrer(JFrame fenetre){
         boolean res = false;

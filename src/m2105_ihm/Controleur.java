@@ -110,9 +110,11 @@ public class Controleur {
      * Ajouter un participant à un événement
      */
     public void ajouterParticipantEvenement() {
-        
-       /** Projet **/
-        
+        Evenement event = planningUI.getSelectedEvt();
+        Contact contactAAjouter = BoiteDialogUI.afficherChoixContactEvent(fenetre, nf.getContacts());
+        if (contactAAjouter != null){
+            event.addParticipant(contactAAjouter);
+        }        
     }
 
     /**
