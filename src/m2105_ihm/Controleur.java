@@ -13,10 +13,6 @@ import m2105_ihm.ui.FenetreUI;
 import m2105_ihm.ui.PlanningUI;
 import m2105_ihm.ui.BoiteDialogUI;
 
-/**
- *
- * @author IUT2
- */
 public class Controleur {
     
     NoyauFonctionnel nf;

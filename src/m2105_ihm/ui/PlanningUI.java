@@ -19,10 +19,6 @@ import m2105_ihm.Controleur;
 import m2105_ihm.nf.Evenement;
 import m2105_ihm.nf.Mois;
 
-/**
- *
- * @author IUT2
- */
 public class PlanningUI extends JPanel {
 
     private Controleur controleur;
@@ -358,4 +354,8 @@ public class PlanningUI extends JPanel {
         }
         centre.setBorder(BorderFactory.createTitledBorder("Calendrier"));
     }
+    
+    public Controleur getControleur(){
+        return this.controleur;
+    }    
 }

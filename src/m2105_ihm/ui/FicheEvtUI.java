@@ -49,13 +49,12 @@ public class FicheEvtUI extends javax.swing.JPanel {
      */
     private void initListeners() {
         
-        /** Projet : à compléter **/
-        
         if (enregistrer != null){
             enregistrer.addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    System.out.println("Enregistrer");
                     planning.getSelectedEvt().setIntitule(intitule.getText());
                 }
             });
@@ -66,7 +65,8 @@ public class FicheEvtUI extends javax.swing.JPanel {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    planning.getSelectedEvt().addParticipant(null);
+                    System.out.println("Ajouter participant");
+                    planning.getControleur().ajouterParticipantEvenement();
                 }
             });
         }
@@ -76,7 +76,8 @@ public class FicheEvtUI extends javax.swing.JPanel {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    planning.getSelectedEvt().removeParticipant(null);
+                    System.out.println("Retirer participant");
+                    planning.getControleur().retirerParticipantEvenement();
                 }
             });
         }
