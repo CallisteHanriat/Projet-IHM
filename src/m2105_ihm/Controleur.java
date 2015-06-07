@@ -104,6 +104,7 @@ public class Controleur {
      */
     public void supprimerEvenement() {
         nf.removeEvenement(planningUI.getSelectedEvt());
+        planningUI.retirerEvt(planningUI.getSelectedEvt());
     }
     
     /**
