@@ -123,7 +123,7 @@ public class PlanningUI extends JPanel {
         if (evt.getDateJour() == 1 && evt.getDateMois() == Mois.JANVIER && evt.getDateAnnee() == 1970){
             evt.setDate(selectedDay, (Mois) mois.getSelectedItem(), annee.getSelectedIndex() + 1900);
             selectedEvenement = evt;
-        }
+        } 
         
         listeEvenements.add(evt);
         setCalendar();
@@ -287,6 +287,11 @@ public class PlanningUI extends JPanel {
             
             final Evenement event = ev;
             
+            /**
+             * On ajoute des listeners à chaque bouton
+             * ainsi on pourra créer des évènements pour chaque jour
+             * de l'année
+             */
             jours.get(nb).addActionListener(new ActionListener() {
 
                 @Override
