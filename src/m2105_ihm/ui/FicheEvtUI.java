@@ -3,6 +3,7 @@
  */
 package m2105_ihm.ui;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -60,6 +61,26 @@ public class FicheEvtUI extends javax.swing.JPanel {
             });
         }
         
+        if (ajouterParticipants != null){
+            ajouterParticipants.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    planning.getSelectedEvt().addParticipant(null);
+                }
+            });
+        }
+        
+        if (retirerParticipants != null){
+            retirerParticipants.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    planning.getSelectedEvt().removeParticipant(null);
+                }
+            });
+        }
+        
     }
     
     /**
@@ -75,8 +96,6 @@ public class FicheEvtUI extends javax.swing.JPanel {
             
             //élements
             contrainteLayout = new GridBagConstraints();
-            ajouterParticipants = new JButton("Ajouter participants");
-            retirerParticipants = new JButton("Retirer participants");
             
             //ajout des composants
             contrainteLayout.gridx = 0;
@@ -95,6 +114,12 @@ public class FicheEvtUI extends javax.swing.JPanel {
             contrainteLayout.gridy = 3;
             listeParticipants = new JList();
             this.add(listeParticipants,contrainteLayout);
+            
+            ajouterParticipants = new JButton("Ajouter participants");
+            this.add(ajouterParticipants);
+            
+            retirerParticipants = new JButton("Retirer participants");
+            this.add(retirerParticipants);
 
             contrainteLayout.gridx = 1;
             contrainteLayout.gridy = 1;

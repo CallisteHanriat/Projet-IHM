@@ -209,6 +209,17 @@ public class FenetreUI extends JFrame {
         });
         menu.add(menuEvenements[0]);
         
+        menuEvenements[1] = new JMenuItem("Supprimer l'évenement");
+        menuEvenements[1].addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Supprimer l'évenement");
+                controleur.supprimerEvenement();
+            }
+        });
+        menu.add(menuEvenements[1]);
+        
         return menu;
     }    
     

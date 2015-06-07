@@ -121,9 +121,11 @@ public class Controleur {
      * Retire un participant d'un événement
      */
     public void retirerParticipantEvenement() {
-    
-       /** Projet **/
-           
+        Evenement event = planningUI.getSelectedEvt();
+        Contact contactASupprimer = BoiteDialogUI.afficherChoixContactEvent(fenetre, nf.getContacts());
+        if (contactASupprimer != null){
+            event.removeParticipant(contactASupprimer);
+        }
     }
 
     /**

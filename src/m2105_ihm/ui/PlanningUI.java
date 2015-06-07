@@ -297,6 +297,11 @@ public class PlanningUI extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     selectedDay = v;
                     selectedEvenement = event;
+                    if (event != null){
+                        PlanningUI.this.controleur.setEvtSelected(true);
+                    } else{
+                        PlanningUI.this.controleur.setEvtSelected(false);
+                    }
                     System.out.println(getSelectedDate());
                     PlanningUI.this.remove(ficheEvt);
                     ficheEvt = new FicheEvtUI(PlanningUI.this);
