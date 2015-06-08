@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.GroupeContacts;
 import m2105_ihm.nf.Symbole;
@@ -45,6 +46,8 @@ public class FicheGroupeUI extends javax.swing.JPanel {
     private GridBagConstraints contrainteGrilleInfoGeneral;
     private GridBagLayout grilleListe;
     private GridBagConstraints contrainteGrilleListe;
+    private String[] colonnes = {"Nom", "Prénom"};
+
     
     /**
      * Creates new form CarnetUI
@@ -89,7 +92,7 @@ public class FicheGroupeUI extends javax.swing.JPanel {
         this.add(infosGroupeGeneralPanel, contrainteGrilleFenetreJpanel);
         
         contrainteGrilleFenetreJpanel.gridy = 1; 
-        contrainteGrilleFenetreJpanel.weighty = 2.;
+        contrainteGrilleFenetreJpanel.weighty = 3.;
         this.add(infosGroupeListePanel, contrainteGrilleFenetreJpanel);
         
         contrainteGrilleFenetreJpanel.gridy = 2;
@@ -112,8 +115,6 @@ public class FicheGroupeUI extends javax.swing.JPanel {
         modelList = new DefaultListModel();
         modelTable = new DefaultTableModel();
         
-        String[] colonnes = {"Nom", "Prénom"};
-        modelTable.setColumnIdentifiers(colonnes);
         tableMembres = new JTable(modelTable);
         
         
@@ -141,14 +142,6 @@ public class FicheGroupeUI extends javax.swing.JPanel {
         contrainteGrilleInfoGeneral.gridx = 1;
         contrainteGrilleInfoGeneral.gridy = 2;
         this.infosGroupeGeneralPanel.add(listeSymboles, contrainteGrilleInfoGeneral); 
-
-        contrainteGrilleListe.gridx = 0;
-        contrainteGrilleListe.gridy = 0;
-        this.infosGroupeListePanel.add(tableMembres.getTableHeader(), contrainteGrilleListe);
-        
-        contrainteGrilleListe.gridx = 0;
-        contrainteGrilleListe.gridy = 1;
-        this.infosGroupeListePanel.add(tableMembres, contrainteGrilleListe);
         
         infosGroupeListePanel.setSize(300, 150);
         this.infosGroupeBoutonsPanel.add(boutonAccepter);
@@ -188,8 +181,17 @@ public class FicheGroupeUI extends javax.swing.JPanel {
             modelTable.addRow(tab2);
         }
         tableMembres.removeAll();
+        modelTable.setColumnIdentifiers(colonnes);
         tableMembres.setModel(modelTable);
-        this.infosGroupeListePanel.add(tableMembres);
+        
+        contrainteGrilleListe.gridx = 0;
+        contrainteGrilleListe.gridy = 0;
+        this.infosGroupeListePanel.add(tableMembres.getTableHeader(), contrainteGrilleListe);
+        
+        contrainteGrilleListe.gridx = 0;
+        contrainteGrilleListe.gridy = 1;      
+        this.infosGroupeListePanel.add(tableMembres, contrainteGrilleListe);
+        
         this.zoneDessin.setPoints(groupe.getPoints());
         return true;
     }
