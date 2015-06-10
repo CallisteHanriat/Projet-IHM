@@ -109,20 +109,23 @@ public class FicheEvtUI extends javax.swing.JPanel {
             intitule = new JTextField(15);
             this.add(intitule, contrainteLayout);
             
+            contrainteLayout.gridx = 0;
+            contrainteLayout.gridy = 1;
+            this.add(new JLabel("Participants : "), contrainteLayout);
+            
             contrainteLayout.gridx = 1;
-            contrainteLayout.gridy = 3;
+            contrainteLayout.gridy = 1;
             listeParticipants = new JList();
             this.add(listeParticipants,contrainteLayout);
             
             contrainteLayout.insets = new Insets(1, 0, 0, 0);
             contrainteLayout.gridx = 1;
-            contrainteLayout.gridy = 1;
-
+            contrainteLayout.gridy = 2;
             ajouterParticipants = new JButton("Ajouter participants");
             this.add(ajouterParticipants, contrainteLayout);
             
             contrainteLayout.gridx = 1;
-            contrainteLayout.gridy = 2;
+            contrainteLayout.gridy = 3;
             retirerParticipants = new JButton("Retirer participants");
             retirerParticipants.setPreferredSize(ajouterParticipants.getPreferredSize());
             this.add(retirerParticipants, contrainteLayout);

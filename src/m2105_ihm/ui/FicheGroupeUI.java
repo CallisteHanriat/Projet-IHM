@@ -129,6 +129,7 @@ public class FicheGroupeUI extends javax.swing.JPanel {
 
         this.infosGroupeGeneralPanel.add(new javax.swing.JLabel("nom groupe : "), contrainteGrilleInfoGeneral);
         
+        contrainteGrilleInfoGeneral.fill = GridBagConstraints.HORIZONTAL;
         contrainteGrilleInfoGeneral.gridx = 1;
         this.infosGroupeGeneralPanel.add(champNom, contrainteGrilleInfoGeneral);
         
