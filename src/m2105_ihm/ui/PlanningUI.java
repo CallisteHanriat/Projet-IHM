@@ -111,20 +111,22 @@ public class PlanningUI extends JPanel {
         contrainte.gridx = 0;
         contrainte.gridy = 0;
         contrainte.weighty = 0.02;
+        contrainte.weightx = 0.5;
+        contrainte.anchor = GridBagConstraints.CENTER;
         contrainte.fill = GridBagConstraints.BOTH;
-        contrainte.gridwidth = 2;
-
+        contrainte.gridwidth = 3;
         this.add(nord, contrainte);
         
 
-        contrainte.gridwidth = 1;
+        contrainte.gridwidth = 2;
         contrainte.gridx = 0;
         contrainte.gridy = 1;
         contrainte.weighty = 1.;
         contrainte.weightx = 1.;
         this.add(centre, contrainte);
         
-        contrainte.gridx = 1;
+        contrainte.gridx = 2;
+        contrainte.gridwidth  = 1;
         this.add(ficheEvt, contrainte);
        }
 
@@ -328,7 +330,8 @@ public class PlanningUI extends JPanel {
                     ficheEvt = new FicheEvtUI(PlanningUI.this);
                     ficheEvt.setValues(event);
                     ficheEvt.setPreferredSize(centre.getPreferredSize());
-                    contrainte.weightx = 0;                    
+                    contrainte.gridwidth = 1;                    
+                    contrainte.gridx = 2;
                     PlanningUI.this.add(ficheEvt, contrainte);
                     ficheEvt.updateUI();
                 }
