@@ -3,8 +3,10 @@
  */
 package m2105_ihm.ui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,6 +33,7 @@ public class PlanningUI extends JPanel {
     private int selectedDay = Calendar.getInstance().getTime().getDay();
     private ArrayList<Evenement> listeEvenements;
     private Evenement selectedEvenement = null;
+    private GridBagConstraints contrainte;
 
     /**
      * Constructeur : initialise les composants de l'IHM pour les événements
@@ -54,6 +57,8 @@ public class PlanningUI extends JPanel {
         /*
          * Fiche événement
          */
+        this.setLayout(new GridBagLayout());
+        contrainte = new GridBagConstraints();
         nord = new JPanel();
         centre = new JPanel();
         nord.setLayout(new GridLayout(1, 2));
@@ -101,12 +106,20 @@ public class PlanningUI extends JPanel {
         setCalendar();
 
         ficheEvt = new FicheEvtUI(this);
+        
+        
+        contrainte.gridx = 0;
+        contrainte.gridy = 0;
+        this.add(nord, contrainte);
+        
 
-        this.setLayout(new BorderLayout());
-        this.add(nord, BorderLayout.NORTH);
-        this.add(centre, BorderLayout.CENTER);
-        this.add(ficheEvt, BorderLayout.EAST);
-    }
+        contrainte.gridx = 0;
+        contrainte.gridy = 1;
+        this.add(centre, contrainte);
+        
+        contrainte.gridx = 1;
+        this.add(ficheEvt, contrainte);
+       }
 
     /**
      * Ajoute un évènement à la liste des évènements
@@ -307,7 +320,7 @@ public class PlanningUI extends JPanel {
                     PlanningUI.this.remove(ficheEvt);
                     ficheEvt = new FicheEvtUI(PlanningUI.this);
                     ficheEvt.setValues(event);
-                    PlanningUI.this.add(ficheEvt, BorderLayout.EAST);
+                    PlanningUI.this.add(ficheEvt, contrainte);
                     ficheEvt.updateUI();
                 }
             });
@@ -319,10 +332,6 @@ public class PlanningUI extends JPanel {
             if (ficheEvt != null){
                 this.remove(ficheEvt);
             } 
-            ficheEvt = new FicheEvtUI(this);
-            ficheEvt.setValues(getSelectedEvt());
-            this.add(ficheEvt, BorderLayout.EAST);
-            ficheEvt.updateUI();
             
             centre.add(jours.get(nb));
             nb++;
