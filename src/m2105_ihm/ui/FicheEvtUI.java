@@ -30,7 +30,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
     private JButton retirerParticipants;
     private JList listeParticipants;
     private GridBagConstraints contrainteLayout;
-    
+    private JPanel boutonAnnulerEnregistrer;
     
     /**
      * Creates new form CarnetUI
@@ -94,6 +94,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
         if (planning.getSelectedEvt() != null){
             //mise en place du layout
             this.setLayout(new GridBagLayout());
+            boutonAnnulerEnregistrer = new JPanel(new GridBagLayout());
             
             //élements
             contrainteLayout = new GridBagConstraints();
@@ -129,18 +130,32 @@ public class FicheEvtUI extends javax.swing.JPanel {
             retirerParticipants = new JButton("Retirer participants");
             retirerParticipants.setPreferredSize(ajouterParticipants.getPreferredSize());
             this.add(retirerParticipants, contrainteLayout);
-
-            contrainteLayout.gridx = 1;
+           
+            //ajout du panel boutonAnnulerEnregistrer dans le panel principal.
+            contrainteLayout.gridx = 0;
             contrainteLayout.gridy = 4;
-            contrainteLayout.gridwidth = contrainteLayout.gridheight = 1;
+            contrainteLayout.gridwidth = 2;
+            contrainteLayout.weightx = 1.;
+            contrainteLayout.weighty = 1.;
+            contrainteLayout.anchor = GridBagConstraints.SOUTH;
+            contrainteLayout.insets = new Insets(0, 0, 20, 0);
+            boutonAnnulerEnregistrer.setBorder(BorderFactory.createTitledBorder("A inscrire "));
+            this.add(boutonAnnulerEnregistrer, contrainteLayout);            
+            
+            GridBagConstraints contrainteLayoutEnregistrerAnnuler = new GridBagConstraints();
+            contrainteLayoutEnregistrerAnnuler.gridx = 0;
+            contrainteLayoutEnregistrerAnnuler.gridy = 0;
+            contrainteLayoutEnregistrerAnnuler.insets = new Insets(WIDTH, 5, WIDTH, 5);
             enregistrer = new JButton("Enregistrer");
-            this.add(enregistrer, contrainteLayout);
+            this.boutonAnnulerEnregistrer.add(enregistrer, contrainteLayoutEnregistrerAnnuler);
 
-            contrainteLayout.gridx = 1;
-            contrainteLayout.gridy = 5;
+            contrainteLayoutEnregistrerAnnuler.gridx = 1;
+            contrainteLayoutEnregistrerAnnuler.gridy = 0;
             annuler = new JButton("Annuler");
             annuler.setPreferredSize(enregistrer.getPreferredSize());
-            this.add(annuler, contrainteLayout);
+            this.boutonAnnulerEnregistrer.add(annuler, contrainteLayoutEnregistrerAnnuler);
+            
+
         } else{
             this.add(new JLabel("Il n'y a pas d'évènements pour ce jour !"));
         }
