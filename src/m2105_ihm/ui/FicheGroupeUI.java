@@ -126,16 +126,17 @@ public class FicheGroupeUI extends javax.swing.JPanel {
         
         contrainteGrilleInfoGeneral.gridx = 0;
         contrainteGrilleInfoGeneral.gridy = 0;
-        
+
         this.infosGroupeGeneralPanel.add(new javax.swing.JLabel("nom groupe : "), contrainteGrilleInfoGeneral);
         
-        contrainteGrilleInfoGeneral.gridx = 2;
+        contrainteGrilleInfoGeneral.fill = GridBagConstraints.HORIZONTAL;
+        contrainteGrilleInfoGeneral.gridx = 1;
         this.infosGroupeGeneralPanel.add(champNom, contrainteGrilleInfoGeneral);
         
-        contrainteGrilleInfoGeneral.gridx = 3;
+        contrainteGrilleInfoGeneral.gridx = 2;
         this.infosGroupeGeneralPanel.add(zoneDessin, contrainteGrilleInfoGeneral);
         
-        contrainteGrilleInfoGeneral.gridx = 3;
+        contrainteGrilleInfoGeneral.gridx = 2;
         contrainteGrilleInfoGeneral.gridy = 2;
         this.infosGroupeGeneralPanel.add(boutonEfface, contrainteGrilleInfoGeneral);
         
