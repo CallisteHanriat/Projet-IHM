@@ -274,7 +274,7 @@ public class PlanningUI extends JPanel {
 
         nombreJours = getNumberOfDayInMonth(m, y);
 
-        int currentDay = Calendar.getInstance().getTime().getDay();
+        int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
         int currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 

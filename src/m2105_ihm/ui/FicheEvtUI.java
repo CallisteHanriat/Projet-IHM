@@ -121,12 +121,14 @@ public class FicheEvtUI extends javax.swing.JPanel {
             
             //INTITULER LISTE
             GridBagConstraints contrainteIntituleListe = new GridBagConstraints();
+            contrainteIntituleListe.anchor = GridBagConstraints.BASELINE_TRAILING;
+            contrainteIntituleListe.weightx = 1.;
             contrainteIntituleListe.gridx = 0;
             contrainteIntituleListe.gridy = 0;
             contrainteIntituleListe.fill = GridBagConstraints.BOTH;
             contrainteIntituleListe.insets = new Insets(25, WIDTH, WIDTH, WIDTH);
-            this.add(new JLabel("Intitulé : "), contrainteIntituleListe);
-
+            this.add(new JLabel("Intitulé : "  , JLabel.RIGHT), contrainteIntituleListe);
+            
             contrainteIntituleListe.gridx = 1;
             contrainteIntituleListe.gridy = 0;
             intitule = new JTextField(15);
@@ -134,8 +136,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
             
             contrainteIntituleListe.gridx = 0;
             contrainteIntituleListe.gridy = 1;
-
-            this.add(new JLabel("Participants : "), contrainteIntituleListe);
+            this.add(new JLabel("Participants : ", JLabel.RIGHT), contrainteIntituleListe);
             
             contrainteIntituleListe.gridx = 1;
             contrainteIntituleListe.gridy = 1;
