@@ -4,7 +4,6 @@
 package m2105_ihm.ui;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
@@ -111,7 +110,6 @@ public class PlanningUI extends JPanel {
         contrainte.gridx = 0;
         contrainte.gridy = 0;
         contrainte.weighty = 0.02;
-        contrainte.weightx = 0.5;
         contrainte.fill = GridBagConstraints.BOTH;
         contrainte.gridwidth = 3;
         this.add(nord, contrainte);

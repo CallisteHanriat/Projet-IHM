@@ -3,6 +3,7 @@
  */
 package m2105_ihm;
 
+import java.awt.Dimension;
 import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.GroupeContacts;
 import m2105_ihm.nf.NoyauFonctionnel;
@@ -154,6 +155,7 @@ public class Controleur {
 
         /* Fenêtre principale */
         fenetre = new FenetreUI(this);
+        fenetre.setResizable(false);
         fenetre.addTab(carnetUI, "Carnet");     // onglet carnet
         fenetre.addTab(planningUI, "Planning"); // onglet planning
         fenetre.afficher();
