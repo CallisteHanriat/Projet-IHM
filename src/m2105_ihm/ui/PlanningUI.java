@@ -4,8 +4,8 @@
 package m2105_ihm.ui;
 
 import java.awt.Color;
-import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +17,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import m2105_ihm.Controleur;
+import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
 import m2105_ihm.nf.Mois;
 
@@ -33,6 +34,7 @@ public class PlanningUI extends JPanel {
     private ArrayList<Evenement> listeEvenements;
     private Evenement selectedEvenement = null;
     private GridBagConstraints contrainte;
+    private Evenement originalEvt;
 
     /**
      * Constructeur : initialise les composants de l'IHM pour les événements
@@ -169,7 +171,7 @@ public class PlanningUI extends JPanel {
      * 
      * @return l'évènement sélectionné l
      */
-    public Evenement getSelectedEvt() {        
+    public Evenement getSelectedEvt() {
         return selectedEvenement;
     }
 
@@ -314,6 +316,12 @@ public class PlanningUI extends JPanel {
                     selectedDay = v;
                     selectedEvenement = event;
                     if (selectedEvenement != null){
+                        originalEvt = new Evenement();
+                        for (Contact contact : selectedEvenement.getParticipants()){
+                            originalEvt.addParticipant(contact);
+                        }
+                        originalEvt.setDate(selectedEvenement.getDateJour(), selectedEvenement.getDateMois(), selectedEvenement.getDateAnnee());
+                        originalEvt.setIntitule(selectedEvenement.getIntitule());
                         PlanningUI.this.controleur.setEvtSelected(true);
                     } else{
                         PlanningUI.this.controleur.setEvtSelected(false);
@@ -377,4 +385,8 @@ public class PlanningUI extends JPanel {
     public Controleur getControleur(){
         return this.controleur;
     }    
+
+    public Evenement getSelectedOriginalEvt() {
+        return originalEvt;
+    }
 }
