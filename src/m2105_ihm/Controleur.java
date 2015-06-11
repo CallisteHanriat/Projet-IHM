@@ -4,6 +4,8 @@
 package m2105_ihm;
 
 import java.awt.Dimension;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.GroupeContacts;
 import m2105_ihm.nf.NoyauFonctionnel;
@@ -36,7 +38,7 @@ public class Controleur {
     public void creerContact() {
         Contact contact = new Contact();
         nf.addContact(contact);
-        carnetUI.ajouterContact(contact);        
+        carnetUI.ajouterContact(contact);
     }
 
     /**
@@ -156,6 +158,37 @@ public class Controleur {
         /* Fenêtre principale */
         fenetre = new FenetreUI(this);
         fenetre.setResizable(false);
+        fenetre.addWindowListener(new WindowListener() {
+
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                quitter();
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
         fenetre.addTab(carnetUI, "Carnet");     // onglet carnet
         fenetre.addTab(planningUI, "Planning"); // onglet planning
         fenetre.afficher();

@@ -6,10 +6,6 @@ package m2105_ihm.nf;
 import java.util.ArrayList;
 
 /**
- *
- * @author IUT2
- */
-/**
  * 
  * @class Evenement
  * Nature d'un evenement

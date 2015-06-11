@@ -8,6 +8,8 @@ import java.awt.Dimension;
 import java.awt.MenuBar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JMenu;
 import javax.swing.JPanel;
@@ -24,7 +26,7 @@ import m2105_ihm.Controleur;
  *
  * @author IUT2
  */
-public class FenetreUI extends JFrame {
+public class FenetreUI extends JFrame{
     /*
      * Composants
      */
@@ -249,7 +251,7 @@ public class FenetreUI extends JFrame {
      * Rend visible la fenetre
      */
     public void afficher() {
-        setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
         setSize(900, 700);
         setVisible(true);                        
     }
@@ -364,5 +366,5 @@ public class FenetreUI extends JFrame {
                 }
                 break;
         }
-    }            
+    }    
 }
