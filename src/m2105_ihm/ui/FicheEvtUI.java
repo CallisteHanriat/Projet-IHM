@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
 
 public class FicheEvtUI extends javax.swing.JPanel {
@@ -65,6 +66,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Ajouter participant");
                     planning.getControleur().ajouterParticipantEvenement();
+                    setValues(planning.getSelectedEvt());
                 }
             });
         }
@@ -76,6 +78,20 @@ public class FicheEvtUI extends javax.swing.JPanel {
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Retirer participant");
                     planning.getControleur().retirerParticipantEvenement();
+                    setValues(planning.getSelectedEvt());
+                }
+            });
+        }
+        
+        if (annuler != null) {
+            annuler.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Annuler");
+                    removeAll();
+                    initUIComponents();
+                    setValues(planning.getSelectedOriginalEvt());
                 }
             });
         }
@@ -187,7 +203,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
         if (event == null) { return false; }
         
         intitule.setText(event.getIntitule());
-        listeParticipants.setListData(planning.getSelectedEvt().getParticipants());
+        listeParticipants.setListData(event.getParticipants());
             
         return false;
     }
