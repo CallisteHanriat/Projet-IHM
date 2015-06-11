@@ -6,7 +6,6 @@ package m2105_ihm.ui;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,10 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
-import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
-import m2105_ihm.nf.Mois;
 
 public class FicheEvtUI extends javax.swing.JPanel {
 
@@ -33,7 +29,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
     private GridBagConstraints contrainteLayout;
     private JPanel boutonAnnulerEnregistrer;
     private JPanel boutonAjouterRetirer;
-    
+    private JPanel intituleListe;
     /**
      * Creates new form CarnetUI
      */
@@ -98,42 +94,56 @@ public class FicheEvtUI extends javax.swing.JPanel {
             this.setLayout(new GridBagLayout());
             boutonAnnulerEnregistrer = new JPanel(new GridBagLayout());
             boutonAjouterRetirer = new JPanel(new GridBagLayout());
+            intituleListe = new JPanel(new GridBagLayout());
             //élements
             contrainteLayout = new GridBagConstraints();
             
             //ajout des composants
-            contrainteLayout.gridx = 0;
-            contrainteLayout.gridy = 0;
-            contrainteLayout.fill = GridBagConstraints.BOTH;
-
-            contrainteLayout.anchor = GridBagConstraints.CENTER;
-            this.add(new JLabel("Intitulé : "), contrainteLayout);
-
-            contrainteLayout.gridx = 1;
-            contrainteLayout.gridy = 0;
-            intitule = new JTextField(15);
-            this.add(intitule, contrainteLayout);
             
-            contrainteLayout.gridx = 0;
-            contrainteLayout.gridy = 1;
-            this.add(new JLabel("Participants : "), contrainteLayout);
-            
-            contrainteLayout.gridx = 1;
-            contrainteLayout.gridy = 1;
-            listeParticipants = new JList();
-            this.add(listeParticipants,contrainteLayout);
            
-            
-            //ajout du panel boutonEnregistrerRetirer du principal.
+            //ajout du panel 
+            contrainteLayout.weighty = 1.;
+            contrainteLayout.weightx = 1.;
+            contrainteLayout.gridx = 0;
+            contrainteLayout.gridy = 0;
+            contrainteLayout.gridheight = 2;
+            this.add(intituleListe, contrainteLayout);
+                       
             contrainteLayout.gridx = 0;
             contrainteLayout.gridy = 3;
-            contrainteLayout.weightx = 1.;
-            contrainteLayout.weighty = 1.;
+            contrainteLayout.gridheight = 1;
             contrainteLayout.gridwidth = 2;
+            contrainteLayout.fill = GridBagConstraints.BOTH;
             contrainteLayout.anchor = GridBagConstraints.CENTER;
             boutonAjouterRetirer.setBorder(BorderFactory.createTitledBorder(""));
             this.add(boutonAjouterRetirer, contrainteLayout);
             
+            contrainteLayout.gridy = 4;
+            boutonAnnulerEnregistrer.setBorder(BorderFactory.createTitledBorder("A inscrire "));
+            this.add(boutonAnnulerEnregistrer, contrainteLayout);          
+            
+            //INTITULER LISTE
+            GridBagConstraints contrainteIntituleListe = new GridBagConstraints();
+            contrainteIntituleListe.gridx = 0;
+            contrainteIntituleListe.gridy = 0;
+            contrainteIntituleListe.fill = GridBagConstraints.BOTH;
+            this.add(new JLabel("Intitulé : "), contrainteIntituleListe);
+
+            contrainteIntituleListe.gridx = 1;
+            contrainteIntituleListe.gridy = 0;
+            intitule = new JTextField(15);
+            this.add(intitule, contrainteIntituleListe);
+            
+            contrainteIntituleListe.gridx = 0;
+            contrainteIntituleListe.gridy = 1;
+            this.add(new JLabel("Participants : "), contrainteIntituleListe);
+            
+            contrainteIntituleListe.gridx = 1;
+            contrainteIntituleListe.gridy = 1;
+            listeParticipants = new JList();
+            this.add(listeParticipants,contrainteIntituleListe);     
+            
+            //boutonEnregistrerRetirer            
             GridBagConstraints contrainteBoutonEnregistrerRetirer = new GridBagConstraints();
             contrainteBoutonEnregistrerRetirer.gridx = 0;
             contrainteBoutonEnregistrerRetirer.gridy = 0;
@@ -146,15 +156,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
             retirerParticipants.setPreferredSize(ajouterParticipants.getPreferredSize());
             this.boutonAjouterRetirer.add(retirerParticipants, contrainteBoutonEnregistrerRetirer);
             
-            //ajout du panel boutonAnnulerEnregistrer dans le panel principal.
-            
-            contrainteLayout.gridy = 4;
-
-            contrainteLayout.anchor = GridBagConstraints.SOUTH;
-            contrainteLayout.insets = new Insets(0, 0, 20, 0);
-            boutonAnnulerEnregistrer.setBorder(BorderFactory.createTitledBorder("A inscrire "));
-            this.add(boutonAnnulerEnregistrer, contrainteLayout);            
-            
+            //boutonAnnulerEnregistrer
             GridBagConstraints contrainteLayoutEnregistrerAnnuler = new GridBagConstraints();
             contrainteLayoutEnregistrerAnnuler.gridx = 0;
             contrainteLayoutEnregistrerAnnuler.gridy = 0;
@@ -162,7 +164,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
             enregistrer = new JButton("Enregistrer");
             this.boutonAnnulerEnregistrer.add(enregistrer, contrainteLayoutEnregistrerAnnuler);
 
-            contrainteLayoutEnregistrerAnnuler.gridx = 1;
+            contrainteLayoutEnregistrerAnnuler.gridx = 1;           
             contrainteLayoutEnregistrerAnnuler.gridy = 0;
             annuler = new JButton("Annuler");
             annuler.setPreferredSize(enregistrer.getPreferredSize());
