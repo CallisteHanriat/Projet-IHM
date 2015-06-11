@@ -6,6 +6,7 @@ package m2105_ihm.ui;
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
@@ -74,6 +75,7 @@ public class CarnetUI extends JPanel {
         cardPanel.add(ficheContact, "contact");
         cardPanel.add(vide, "vide");
         cardPanel.add(ficheGroupe, "groupe");
+        
         
         setLayout(new BorderLayout());
         add(listeContacts, BorderLayout.WEST);
