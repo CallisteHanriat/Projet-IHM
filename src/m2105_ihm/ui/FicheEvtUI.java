@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
 import m2105_ihm.nf.Mois;
@@ -103,6 +104,8 @@ public class FicheEvtUI extends javax.swing.JPanel {
             //ajout des composants
             contrainteLayout.gridx = 0;
             contrainteLayout.gridy = 0;
+            contrainteLayout.fill = GridBagConstraints.BOTH;
+
             contrainteLayout.anchor = GridBagConstraints.CENTER;
             this.add(new JLabel("Intitulé : "), contrainteLayout);
 
@@ -127,8 +130,8 @@ public class FicheEvtUI extends javax.swing.JPanel {
             contrainteLayout.weightx = 1.;
             contrainteLayout.weighty = 1.;
             contrainteLayout.gridwidth = 2;
-
-            
+            contrainteLayout.anchor = GridBagConstraints.CENTER;
+            boutonAjouterRetirer.setBorder(BorderFactory.createTitledBorder(""));
             this.add(boutonAjouterRetirer, contrainteLayout);
             
             GridBagConstraints contrainteBoutonEnregistrerRetirer = new GridBagConstraints();
