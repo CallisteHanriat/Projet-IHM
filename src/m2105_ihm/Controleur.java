@@ -108,7 +108,7 @@ public class Controleur {
      */
     public void ajouterParticipantEvenement() {
         Evenement event = planningUI.getSelectedEvt();
-        Contact contactAAjouter = BoiteDialogUI.afficherChoixContactEvent(fenetre, nf.getContacts());
+        Contact contactAAjouter = BoiteDialogUI.afficherChoixContactEvent(fenetre, nf.getContactsNotInEvenements(event));
         if (contactAAjouter != null){
             event.addParticipant(contactAAjouter);
         }        
@@ -119,7 +119,7 @@ public class Controleur {
      */
     public void retirerParticipantEvenement() {
         Evenement event = planningUI.getSelectedEvt();
-        Contact contactASupprimer = BoiteDialogUI.afficherChoixContactEvent(fenetre, nf.getContacts());
+        Contact contactASupprimer = BoiteDialogUI.afficherChoixContactEvent(fenetre, nf.getContactsEvenements(event));
         if (contactASupprimer != null){
             event.removeParticipant(contactASupprimer);
         }

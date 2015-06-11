@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Arrays;
 
 /**
  *
@@ -161,6 +162,58 @@ public class NoyauFonctionnel {
         return res;
     }
 
+    /**
+     * Retourne la liste des contacts participants à un évènement
+     * 
+     * @param evenement un evenement
+     * @return un tableau de contacts
+     */
+    public Contact [] getContactsEvenements(Evenement evenement){
+        Contact [] res;
+        
+        if (evenement != null) {
+            ArrayList<Contact> liste = new ArrayList<>();
+            
+            for(Contact c : contacts){
+                if (Arrays.asList(evenement.getParticipants()).contains(c)){
+                    liste.add(c);
+                }
+            }
+            
+            res = liste.toArray(new Contact[0]);
+        } else {
+            res = new Contact[0];
+        }
+        
+        return res;
+    }
+    
+    /**
+     * Retourne la liste des contacts ne participants pas à un évènement
+     * 
+     * @param evenement un evenement
+     * @return un tableau de contacts
+     */
+    public Contact [] getContactsNotInEvenements(Evenement evenement){
+        Contact [] res;
+        
+        if (evenement != null) {
+            ArrayList<Contact> liste = new ArrayList<>();
+            
+            for(Contact c : contacts){
+                if (!Arrays.asList(evenement.getParticipants()).contains(c)){
+                    liste.add(c);
+                }
+            }
+            
+            res = liste.toArray(new Contact[0]);
+        } else {
+            res = new Contact[0];
+        }
+        
+        return res;
+    }
+    
     /**
      * Retourne la liste des evenements
      * @return 
