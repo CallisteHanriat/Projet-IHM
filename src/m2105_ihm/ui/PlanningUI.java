@@ -335,6 +335,8 @@ public class PlanningUI extends JPanel {
                         PlanningUI.this.controleur.setEvtSelected(true);
                     } else{
                         PlanningUI.this.controleur.setEvtSelected(false);
+                        ficheEvt.repaint();
+                        ficheEvt.updateUI();
                     }
                     System.out.println(getSelectedDate());
                     PlanningUI.this.remove(ficheEvt);
