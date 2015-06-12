@@ -35,6 +35,8 @@ public class PlanningUI extends JPanel {
     private Evenement selectedEvenement = null;
     private GridBagConstraints contrainte;
     private Evenement originalEvt;
+    private Mois selectedMonth;
+    private int selectedYear;
 
     /**
      * Constructeur : initialise les composants de l'IHM pour les événements
@@ -45,6 +47,19 @@ public class PlanningUI extends JPanel {
         super();
 
         this.controleur = ctrl;
+        
+        Mois currentMonth = null;
+        int nb = 0;
+        for (Mois m : Mois.values()) {
+            if (nb == Calendar.getInstance().get(Calendar.MONTH)) {
+                currentMonth = m;
+                break;
+            }
+            nb++;
+        }
+        selectedMonth = currentMonth;
+        
+        selectedYear = Calendar.getInstance().get(Calendar.YEAR);
         
         this.listeEvenements = new ArrayList<>();
         
@@ -64,18 +79,9 @@ public class PlanningUI extends JPanel {
         centre = new JPanel();
         nord.setLayout(new GridLayout(1, 2));
 
-        mois = new JComboBox(Mois.values());
-        Mois currentMonth = null;
-        int nb = 0;
-        for (Mois m : Mois.values()) {
-            if (nb == Calendar.getInstance().get(Calendar.MONTH)) {
-                currentMonth = m;
-                break;
-            }
-            nb++;
-        }
+        mois = new JComboBox(Mois.values());        
 
-        mois.setSelectedItem(currentMonth);
+        mois.setSelectedItem(selectedMonth);
         mois.addActionListener(new ActionListener() {
 
             @Override
@@ -86,12 +92,11 @@ public class PlanningUI extends JPanel {
         });
 
         annee = new JComboBox();
-        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = 1900; i <= currentYear; i++) {
+        for (int i = 1900; i <= 2100; i++) {
             annee.addItem(i);
         }
 
-        annee.setSelectedIndex(currentYear - 1900);
+        annee.setSelectedIndex(selectedYear - 1900);
         annee.addActionListener(new ActionListener() {
 
             @Override
@@ -234,7 +239,7 @@ public class PlanningUI extends JPanel {
      * @return la date sélectionnée
      */
     public String getSelectedDate() {
-        return selectedDay + "/" + (mois.getSelectedIndex() + 1) + "/" + (annee.getSelectedIndex() + 1900);
+        return selectedDay + "/" + selectedMonth.name() + "/" + selectedYear;
     }
 
     /**
@@ -262,8 +267,10 @@ public class PlanningUI extends JPanel {
          * On récupère la date sélectionnée
          */
         int m = mois.getSelectedIndex() + 1;
+        final Mois mo = (Mois) mois.getSelectedItem();
         int d = 1;
         int y = annee.getSelectedIndex() + 1900;
+        final int ye = y;
 
         /**
          * On calcule le premier jour du mois
@@ -327,6 +334,8 @@ public class PlanningUI extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     selectedDay = v;
                     selectedEvenement = event;
+                    selectedMonth = mo;
+                    selectedYear = ye;
                     if (selectedEvenement != null){
                         originalEvt = new Evenement();
                         for (Contact contact : selectedEvenement.getParticipants()){
