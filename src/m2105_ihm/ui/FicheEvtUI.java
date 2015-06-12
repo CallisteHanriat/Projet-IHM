@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
+import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
 
 public class FicheEvtUI extends javax.swing.JPanel {
@@ -92,6 +94,8 @@ public class FicheEvtUI extends javax.swing.JPanel {
                     removeAll();
                     initUIComponents();
                     setValues(planning.getSelectedOriginalEvt());
+                    getValues(planning.getSelectedEvt());
+                    initListeners();
                 }
             });
         }
@@ -218,6 +222,12 @@ public class FicheEvtUI extends javax.swing.JPanel {
         if (event == null) { return false; }
        
         event.setIntitule(intitule.getText());
+        
+        ListModel model = listeParticipants.getModel();
+        for(int i=0; i < model.getSize(); i++){
+            Contact c = (Contact) model.getElementAt(i);  
+            event.addParticipant(c);
+        }
         
         return true;
     }
