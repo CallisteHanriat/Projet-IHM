@@ -3,7 +3,6 @@
  */
 package m2105_ihm.ui;
 
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -15,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
 
 public class FicheEvtUI extends javax.swing.JPanel {
@@ -33,6 +31,8 @@ public class FicheEvtUI extends javax.swing.JPanel {
     private JPanel intituleListe;
     /**
      * Creates new form CarnetUI
+     * 
+     * @param le planning
      */
     public FicheEvtUI(PlanningUI planning) {
         super();
@@ -205,7 +205,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
         intitule.setText(event.getIntitule());
         listeParticipants.setListData(event.getParticipants());
             
-        return false;
+        return true;
     }
 
     /**

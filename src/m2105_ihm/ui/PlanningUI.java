@@ -140,6 +140,13 @@ public class PlanningUI extends JPanel {
         if (evt.getDateJour() == 1 && evt.getDateMois() == Mois.JANVIER && evt.getDateAnnee() == 1970){
             evt.setDate(selectedDay, (Mois) mois.getSelectedItem(), annee.getSelectedIndex() + 1900);
             selectedEvenement = evt;
+            ficheEvt = new FicheEvtUI(this);
+            ficheEvt.setValues(evt);
+            ficheEvt.setPreferredSize(centre.getPreferredSize());
+            contrainte.gridwidth = 1;
+            contrainte.gridx = 2;
+            add(ficheEvt, contrainte);
+            ficheEvt.repaint();
         } 
         
         listeEvenements.add(evt);
@@ -159,9 +166,12 @@ public class PlanningUI extends JPanel {
         if (evt == null) {
             return false;
         }
-
+        
         listeEvenements.remove(evt);
         setCalendar();
+        
+        remove(ficheEvt);
+        updateUI();
         
         return false;
     }
@@ -341,10 +351,6 @@ public class PlanningUI extends JPanel {
             if (i == currentDay && m == currentMonth && y == currentYear) {
                 jours.get(nb).setBackground(Color.ORANGE);
             }
-            
-            if (ficheEvt != null){
-                this.remove(ficheEvt);
-            } 
             
             centre.add(jours.get(nb));
             nb++;
