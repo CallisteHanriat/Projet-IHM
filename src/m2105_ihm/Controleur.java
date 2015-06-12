@@ -111,10 +111,14 @@ public class Controleur {
      */
     public void ajouterParticipantEvenement() {
         Evenement event = planningUI.getSelectedEvt();
-        Contact contactAAjouter = BoiteDialogUI.afficherChoixContactEvent(fenetre, nf.getContactsNotInEvenements(event));
-        if (contactAAjouter != null){
-            event.addParticipant(contactAAjouter);
-        }        
+        if (nf.getContactsNotInEvenements(event).length > 0){
+            Contact contactAAjouter = BoiteDialogUI.afficherChoixContactEvent(fenetre, nf.getContactsNotInEvenements(event));
+            if (contactAAjouter != null){
+                event.addParticipant(contactAAjouter);
+            }        
+        } else {
+            BoiteDialogUI.impossible(fenetre, "Impossible d'ajouter un participant ! \n Tous les contacts participent déja");
+        }
     }
 
     /**
@@ -122,9 +126,13 @@ public class Controleur {
      */
     public void retirerParticipantEvenement() {
         Evenement event = planningUI.getSelectedEvt();
-        Contact contactASupprimer = BoiteDialogUI.afficherChoixContactEvent(fenetre, nf.getContactsEvenements(event));
-        if (contactASupprimer != null){
-            event.removeParticipant(contactASupprimer);
+        if (nf.getContactsEvenements(event).length > 0){
+            Contact contactASupprimer = BoiteDialogUI.afficherChoixContactEvent(fenetre, nf.getContactsEvenements(event));
+            if (contactASupprimer != null){
+                event.removeParticipant(contactASupprimer);
+            }
+        } else {
+            BoiteDialogUI.impossible(fenetre, "Impossible de retirer un participant ! \n La liste est vide");
         }
     }
 
