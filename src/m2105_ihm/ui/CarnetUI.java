@@ -61,7 +61,7 @@ public class CarnetUI extends JPanel {
          * Ajout des fiches avec commutation grace au layout
          */
         
-        JPanel vide = new JPanel();        
+        JPanel vide = new JPanel();
         ficheGroupe = new FicheGroupeUI(this);
         ficheContact = new FicheContactUI(this);
 

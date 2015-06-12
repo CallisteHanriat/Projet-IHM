@@ -8,17 +8,23 @@ import java.awt.Dimension;
 import java.awt.MenuBar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.swing.Action;
 
-import javax.swing.JMenu;
-import javax.swing.JPanel;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.KeyStroke;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.MenuKeyEvent;
+import javax.swing.event.MenuKeyListener;
 
 import m2105_ihm.Controleur;
         
@@ -103,6 +109,7 @@ public class FenetreUI extends JFrame{
                 }
             }
         );
+        menuFichier[0].setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,InputEvent.CTRL_MASK));
         menu.add(menuFichier[0]);
         
         /* Quitter */
@@ -114,6 +121,7 @@ public class FenetreUI extends JFrame{
                 }
             }
         );
+        menuFichier[1].setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,InputEvent.CTRL_MASK));
         menu.add(menuFichier[1]);
         
         return menu;

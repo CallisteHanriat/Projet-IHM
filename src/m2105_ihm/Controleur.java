@@ -117,7 +117,7 @@ public class Controleur {
                 event.addParticipant(contactAAjouter);
             }        
         } else {
-            BoiteDialogUI.impossible(fenetre, "Impossible d'ajouter un participant ! \n Tous les contacts participent déja");
+            BoiteDialogUI.message(fenetre, "Impossible d'ajouter un participant ! \n Tous les contacts participent déja");
         }
     }
 
@@ -132,7 +132,7 @@ public class Controleur {
                 event.removeParticipant(contactASupprimer);
             }
         } else {
-            BoiteDialogUI.impossible(fenetre, "Impossible de retirer un participant ! \n La liste est vide");
+            BoiteDialogUI.message(fenetre, "Impossible de retirer un participant ! \n La liste est vide");
         }
     }
 
@@ -140,6 +140,7 @@ public class Controleur {
      * Met à jour la base de données
      */
     public void enregistrer() {
+        BoiteDialogUI.message(fenetre, "Fichier enregistré !");
         nf.updateDB();
     }    
         

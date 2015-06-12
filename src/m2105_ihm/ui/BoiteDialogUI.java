@@ -130,7 +130,7 @@ public class BoiteDialogUI {
         return res;
     }
     
-    public static void impossible(JFrame fenetre, String message){
+    public static void message(JFrame fenetre, String message){
         JOptionPane.showMessageDialog(fenetre, message);
     }
     
